@@ -1,0 +1,8 @@
+#!/bin/bash
+# setup keyboard layouts
+setxkbmap -layout us,de
+setxkbmap -option 'grp:alt_shift_toggle'
+
+# map capslock to escape for single press and control for hold
+setxkbmap -option ctrl:nocaps
+xcape -e 'Control_L=Escape'
