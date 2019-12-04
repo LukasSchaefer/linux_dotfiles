@@ -7,9 +7,9 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='3;33'
 
 # # Additional scripts
-source ~/dotfiles/scripts/functions.zsh 
-source ~/dotfiles/scripts/stream/selectstreams.sh
-source ~/dotfiles/scripts/stream/streams.sh
+source ~/.scripts/functions.zsh 
+source ~/.scripts/stream/selectstreams.sh
+source ~/.scripts/stream/streams.sh
 
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 

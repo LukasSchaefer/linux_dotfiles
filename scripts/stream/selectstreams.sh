@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source ~/dotfiles/scripts/functions.zsh
+source ~/.scripts/functions.zsh
 
 # Script to start various twitch streams with the help of livestream and a select/case implementation
 # while listing the alias for all the streams 

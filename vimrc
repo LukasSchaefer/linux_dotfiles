@@ -35,6 +35,8 @@ Plugin 'cypok/vim-sml'
 Plugin 'rstacruz/sparkup'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'flrnprz/plastic.vim'
+Plugin 'skielbasa/vim-material-monokai'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'kristijanhusak/vim-hybrid-material'
 
@@ -117,7 +119,11 @@ set tabstop=4
 set expandtab
 
 "set colourscheme
-colorscheme atom-dark
+set background=dark
+set t_Co=16
+"colorscheme molokai_dark
+"colorscheme plastic
+colorscheme material-monokai
 
 " __________________________________ PLUGIN SETTINGS ______________________________________
 "=> Airline setup 

@@ -1,6 +1,6 @@
 #include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
 
-Xft.dpi:       140
+!Xft.dpi:       140
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
@@ -23,7 +23,7 @@ Xft.lcdfilter: lcddefault
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                       0
 
-URxvt.font:                         xft:Droid Sans Mono Dotted for Powerline:style=Regular:size=9
+URxvt.font:                         xft:Droid Sans Mono Dotted for Powerline:style=Regular:size=10
 
 URxvt.depth:                        32
 !URxvt.background:                   [100]#222D31

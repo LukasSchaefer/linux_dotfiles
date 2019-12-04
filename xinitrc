@@ -35,7 +35,10 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # change DPI of Xserver - i3 
-xrandr --dpi 140
+# xrandr --dpi 140
+
+# set background
+# sh ~/.fehbg
 
 # start some nice programs
 
