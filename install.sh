@@ -4,15 +4,28 @@ git submodule update --init
 # install rofi
 sudo pacman -Syu rofi
 sudo pacman -Syu compton
-
-# copy icons, fonts and themes
-yes | cp -rf ./local/share/* ~/.local/share/
-clear
+sudo pacman -Syu yay
 
 # install San Francisco Apple fonts
 git clone git@github.com:AppleDesignResources/SanFranciscoFont.git
 cp SanFranciscoFont/* ~/.local/share/fonts/
 rm -rf SanFranciscoFont
+
+# install Nerd-Fonts
+# download DroidSansMono fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/DroidSansMono.zip
+unzip DroidSansMono.zip
+rm -rf DroidSansMono.zip
+# download Meslo fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Meslo.zip
+unzip Meslo.zip
+rm -rf Meslo.zip
+# download Ubuntu fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Ubuntu.zip
+unzip Ubuntu.zip
+rm -rf Ubuntu.zip
+# move fonts to font directory
+mv *.{otf,ttf} ~/.local/share/fonts/
 
 # rebuild font cache
 fc-cache -f -v
@@ -102,7 +115,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # link to zshrc
 rm ~/.zshrc
-ln -s ./zshrc ~/.zshrc
+ln -s ./zsh/zshrc ~/.zshrc
+
+# link aliases
+ln -s ./zsh/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh
 
 # install fish-like autosuggestions plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -110,5 +126,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # install 256-color plugin
 ( cd $ZSH_CUSTOM/plugins && git clone https://github.com/chrissicool/zsh-256color )
 
+# install powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
 # link to scripts
 ln -s ./scripts ~/.scripts
+
+# install fancy lock screen
+yay -S i3lock-fancy
