@@ -188,7 +188,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
 assign [class="Chromium"] $ws4
-assign [class="Spotify"] $ws8
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -416,6 +415,3 @@ mode "$mode_gaps_outer" {
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-
-exec feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-767892.jpg'
