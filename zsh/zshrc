@@ -6,10 +6,13 @@ export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='3;33'
 
-# # Additional scripts
+# Additional scripts
 source ~/.scripts/functions.zsh 
 source ~/.scripts/stream/selectstreams.sh
 source ~/.scripts/stream/streams.sh
+
+# set background
+feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-xl633d.png'
 
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 
@@ -20,6 +23,14 @@ export ZSH=/home/lukas/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+
+# powerlevel10k theme
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+# POWERLEVEL9K_MODE="awesome-patched"
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# # use pure prompt
+# source ~/linux_dotfiles/zsh/prompts/custom-p10k-pure.zsh
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random

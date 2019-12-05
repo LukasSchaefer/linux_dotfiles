@@ -5,6 +5,9 @@ set noshowmode
 " map Ctrl-K to Esc
 imap <C-K> <Esc>
 
+" allow system clipboard
+set clipboard=unnamed
+
 filetype plugin on
 
 " Starting with Vim 7, the filetype of empty .tex files defaults to
