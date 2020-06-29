@@ -1,11 +1,12 @@
 #include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
 
-!Xft.dpi:       140
+Xft.dpi:       140
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.autohint:  false
-Xft.hintstyle: hintslight
+! Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
 !XTerm*termName:          xterm-256color
@@ -63,7 +64,23 @@ URxvt.internalBorder: 5
 ! URxvt.transparent:	true
 ! URxvt.shading:		15
 
-URxvt.url-launcher: /usr/bin/firefox
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-launcher: /snap/bin/chromium
+URxvt.urlLauncher: /snap/bin/chromium
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+URxvt.keyboard-select.clipboard: true
 
 ! Rofi theme
-rofi.theme: /home/lukas/.local/share/rofi/themes/Arc-Dark.rasi
+! rofi.theme: /home/lukas/.local/share/rofi/themes/Arc-Dark.rasi
+! rofi.theme: /home/lukas/.local/share/rofi/themes/slate.rasi
+rofi.theme: /home/lukas/.local/share/rofi/themes/custom_arc_slate.rasi

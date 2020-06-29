@@ -11,9 +11,6 @@ source ~/.scripts/functions.zsh
 source ~/.scripts/stream/selectstreams.sh
 source ~/.scripts/stream/streams.sh
 
-# set background
-feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-xl633d.png'
-
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 
 # Path to your oh-my-zsh installation.

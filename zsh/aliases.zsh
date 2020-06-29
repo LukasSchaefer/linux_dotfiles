@@ -14,8 +14,8 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 # open folder with 'o'
-alias o="xdg-open ."
-alias open="xdg-open"
+alias o="nautilus ."
+alias open="nautilus"
 
 # sorts top list by cpu default
 alias top="top -o cpu"

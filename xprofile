@@ -1,8 +1,12 @@
 #!/bin/bash
+
 # setup keyboard layouts
-setxkbmap -layout us,de
-setxkbmap -option 'grp:alt_shift_toggle'
+# setxkbmap -layout us,de,cn
+# setxkbmap -option 'grp:alt_shift_toggle'
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 # map capslock to escape for single press and control for hold
-setxkbmap -option ctrl:nocaps
-xcape -e 'Control_L=Escape'
+# setxkbmap -option ctrl:nocaps
+# xcape -e 'Control_L=Escape'
