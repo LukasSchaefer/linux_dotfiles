@@ -31,3 +31,5 @@ ln -s ~/dotfiles/scripts ~/.scripts
 
 bash setup_gtk.sh
 bash setup_zsh.sh
+bash setup_chinese.sh
+bash setup_applications.sh

@@ -1,3 +1,6 @@
 [submodule "Xresources-themes"]
 	path = Xresources-themes
 	url = git@github.com:logico-dev/Xresources-themes.git
+[submodule "scripts/polybar-spotify-controls"]
+	path = scripts/polybar-spotify-controls
+	url = https://github.com/dietervanhoof/polybar-spotify-controls.git

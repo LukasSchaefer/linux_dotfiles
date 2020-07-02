@@ -21,6 +21,8 @@ sudo apt install --yes kbdd
 rm -rf ~/.config/i3/*
 ln -s ~/dotfiles/i3/config ~/.config/i3/config
 ln -s ~/dotfiles/i3status.conf ~/.config/i3/i3status.conf
+ln -s ~/dotfiles/i3blocks.conf ~/.config/i3/i3blocks.conf
+ln -s ~/dotfiles/scripts ~/.config/i3/scripts
 
 # install fancy lock screen
 sudo apt install --yes i3lock-fancy
@@ -28,3 +30,6 @@ sudo apt install --yes i3lock-fancy
 # install xclip, scrot (screenshot tool)
 sudo apt install --yes xclip
 sudo apt install --yes scrot
+
+# install xbacklight
+sudo apt install --yes xbacklight
