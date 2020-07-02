@@ -142,7 +142,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 5
+label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -154,7 +154,7 @@ label-focused-padding = 5
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 5
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
@@ -165,7 +165,7 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 5
+label-urgent-padding = 2
 
 strip-wsnumbers = true
 
@@ -394,7 +394,7 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 [module/spotify]
 type = custom/ipc
 hook-0 = echo ""
-hook-1 = python3 ~/.scripts/polybar-spotify-controls/scripts/spotify/spotify_status.py
+hook-1 = python3 ~/.scripts/spotify/spotify_status.py
 initial = 1
 format-padding = 4
 format-underline = #1db954
@@ -458,7 +458,7 @@ ramp-capacity-foreground = ${colors.foreground-alt}
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 90
 
 format = <ramp> <label>
 format-underline = #f50a4d
