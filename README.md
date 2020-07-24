@@ -1,6 +1,16 @@
 ## Linux Dotfiles
 
-This contains my dotfiles including config files for **X resources**, **i3**, **GTK**, **vim**, **zsh** and aliases.
+This contains my dotfiles including config files for 
+
+- i3
+- polybar
+- rofi
+- XResources
+- zsh
+- GTK
+- vim
+- ranger
+- keyboard setup (with Chinese)
 
 The i3 and X-resources setup is based on [Manjaro i3](https://manjaro.org/download/community/i3/). Note that this is a community provided edition!
 
