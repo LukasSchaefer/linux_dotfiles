@@ -4,7 +4,8 @@
 basedir="/sys/class/backlight/"
 
 # get the backlight handler
-handler=$basedir$(ls $basedir)"/"
+# handler=$basedir$(ls $basedir)"/"
+handler=$basedir"intel_backlight/"
 
 # get current brightness
 old_brightness=$(cat $handler"brightness")

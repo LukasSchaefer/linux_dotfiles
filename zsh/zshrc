@@ -12,6 +12,9 @@ source ~/.scripts/stream/streams.sh
 # Path to your oh-my-zsh installation.
 export ZSH=/home/lukas/.oh-my-zsh
 
+# add local bin to path
+export PATH="$PATH:/home/lukas/.local/bin"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -125,3 +128,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+PATH="/home/lukas/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/lukas/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/lukas/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/lukas/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/lukas/perl5"; export PERL_MM_OPT;
