@@ -215,9 +215,12 @@ bindsym $mod+c exec --no-startup-id LC_NUMERIC=en_US.UTF-8 rofi -show calc -modi
 
 # audio controls
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
+# bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec ~/.scripts/volumeControl.sh up
+bindsym XF86AudioLowerVolume exec ~/.scripts/volumeControl.sh down
+bindsym XF86AudioMute exec ~/.scripts/volumeControl.sh mute
 
 # media controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -225,8 +228,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # brightness control
-bindsym XF86MonBrightnessUp exec bash ~/.scripts/backlight.sh +11 # increase screen brightness
-bindsym XF86MonBrightnessDown exec bash ~/.scripts/backlight.sh -9 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/.scripts/brightnessControl.sh up # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.scripts/brightnessControl.sh down # decrease screen brightness
 
 # keyboard brightness control
 # increase/decrease keyboard brightness
@@ -329,7 +334,6 @@ bindsym $mod+m bar mode toggle
 # -----------------------------------------------------------------------------------
 
 # Define current gaps
-smart_gaps on
 smart_borders on
 gaps inner 10
 gaps outer 0

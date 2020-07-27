@@ -1,39 +1,35 @@
-#!/bin/bash
-# source: https://www.frandieguez.dev/posts/macbook-pro-keyboard-backlight-keys-on-ubuntu-gnulinux/
+#!/usr/bin/env bash
+# inspired by: https://www.frandieguez.dev/posts/macbook-pro-keyboard-backlight-keys-on-ubuntu-gnulinux/
 BACKLIGHT=$(cat /sys/class/leds/smc::kbd_backlight/brightness)
+MAX_BACKLIGHT=$(cat /sys/class/leds/smc::kbd_backlight/max_brightness) 
 INCREMENT=20
 
 SET_VALUE=0
 case $1 in
-
     up)
         TOTAL=`expr $BACKLIGHT + $INCREMENT`
-        if [ $TOTAL -gt "255" ]; then
-            exit 1
+        if [ $TOTAL -gt $MAX_BACKLIGHT ]; then
+            TOTAL=$MAX_BACKLIGHT
         fi
-        SET_VALUE=1
         ;;
     down)
         TOTAL=`expr $BACKLIGHT - $INCREMENT`
         if [ $TOTAL -lt "0" ]; then
-            exit 1
+            TOTAL=0
         fi
-        SET_VALUE=1
         ;;
     total)
     TEMP_VALUE=$BACKLIGHT
-    while [ $TEMP_VALUE -lt "255" ]; do
+    while [ $TEMP_VALUE -lt $MAX_BACKLIGHT ]; do
         TEMP_VALUE=`expr $TEMP_VALUE + 1`
-        if [ $TEMP_VALUE -gt "255" ]; then TEMP_VALUE=255; fi
-        echo $TEMP_VALUE > /sys/class/leds/smc::kbd_backlight/brightness
+        if [ $TEMP_VALUE -gt $MAX_BACKLIGHT ]; then TOTAL=$MAX_BACKLIGHT; fi
     done
         ;;
     off)
     TEMP_VALUE=$BACKLIGHT
     while [ $TEMP_VALUE -gt "0" ]; do
         TEMP_VALUE=`expr $TEMP_VALUE - 1`
-        if [ $TEMP_VALUE -lt "0" ]; then TEMP_VALUE=0; fi
-        echo $TEMP_VALUE > /sys/class/leds/smc::kbd_backlight/brightness
+        if [ $TEMP_VALUE -lt "0" ]; then TOTAL=0; fi
     done
         ;;
     *)
@@ -41,7 +37,16 @@ case $1 in
         ;;
 esac
 
-if [ $SET_VALUE -eq "1" ]; then
-    sudo chmod 666 /sys/class/leds/smc::kbd_backlight/brightness
-    echo $TOTAL > /sys/class/leds/smc::kbd_backlight/brightness
-fi
+function send_notification {
+  icon="notification-keyboard-brightness"
+  # Make the bar with the special character ─ (it's not dash -)
+  # https://en.wikipedia.org/wiki/Box-drawing_character
+  CALC_VALUE=$(($TOTAL * 100 / $MAX_BACKLIGHT))
+  bar=$(seq -s "─" 0 $((CALC_VALUE / 5)) | sed 's/[0-9]//g')
+  # Send the notification
+  dunstify -i "$icon" -r 5555 -u normal "$CALC_VALUE%   $bar"
+}
+
+sudo chmod 666 /sys/class/leds/smc::kbd_backlight/brightness
+echo $TOTAL > /sys/class/leds/smc::kbd_backlight/brightness
+send_notification

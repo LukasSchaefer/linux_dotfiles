@@ -33,3 +33,19 @@ sudo apt install --yes scrot
 
 # install xbacklight
 sudo apt install --yes xbacklight
+
+echo "check script/README for xbacklight fix"
+# find Identifier with `xrandr --verbose | head`
+# set /etc/X11/xorg.conf to
+# Section "Device"
+#     Identifier  "0x72"
+#     Driver      "intel"
+#     Option      "Backlight"  "intel_backlight"
+# EndSection
+
+echo "check script/README for sound device fix"
+# set default amixer sound device
+# find ID with `cat /proc/asound/cards` or `alsamixer` and sound card option
+# set corresponding ID in /etc/asound.conf to
+# defaults.pcm.card 1
+# defaults.ctl.card 1
