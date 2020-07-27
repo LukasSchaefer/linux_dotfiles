@@ -23,6 +23,9 @@ alias top="top -o cpu"
 # use htop with sudo (to show ram/cpu) and also sort for cpu usage
 alias htop="htop --sort-key PERCENT_CPU"
 
+# alias for better find
+alias fd="fdfind"
+
 # -------------------------------------------------------------------
 # Useful Scripts
 # -------------------------------------------------------------------
@@ -39,9 +42,9 @@ alias cheat="cd ~/cheatsheets"
 alias cheatsheets="cd ~/cheatsheets"
 alias cl="cd; clear"
 alias c="clear"
-alias dotfiles="cd ~/linux_dotfiles"
-alias dt="cd ~/linux_dotfiles"
-alias scripts="cd ~/linux_dotfiles/scripts"
+alias dotfiles="cd ~/dotfiles"
+alias dt="cd ~/dotfiles"
+alias scripts="cd ~/dotfiles/scripts"
 alias dl="cd ~/Downloads"
 alias desk="cd ~/Desktop"
 alias db="cd ~/Dropbox"

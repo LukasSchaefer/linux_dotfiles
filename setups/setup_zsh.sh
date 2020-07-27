@@ -26,3 +26,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # install powerlevel10k theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# install shell scripts
+# install ad - advance-touch
+pip install --user advance-touch
+# install fd - better find
+sudo apt install --yes fd-find
