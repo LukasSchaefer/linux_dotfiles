@@ -34,3 +34,4 @@ bash setups/setup_zsh.sh
 bash setups/setup_ranger.sh
 bash setups/setup_chinese.sh
 bash setups/setup_applications.sh
+bash setups/setup_uxplay.sh
