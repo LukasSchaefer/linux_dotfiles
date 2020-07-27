@@ -225,8 +225,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # brightness control
-bindsym XF86MonBrightnessUp exec bash ~/.scripts/backlight.sh +10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec bash ~/.scripts/backlight.sh -10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec bash ~/.scripts/backlight.sh +11 # increase screen brightness
+bindsym XF86MonBrightnessDown exec bash ~/.scripts/backlight.sh -9 # decrease screen brightness
 
 # keyboard brightness control
 # increase/decrease keyboard brightness
