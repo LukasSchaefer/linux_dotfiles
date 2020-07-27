@@ -28,7 +28,7 @@ function send_notification {
     # https://en.wikipedia.org/wiki/Box-drawing_character
     bar=$(seq --separator="─" 0 "$((volume / 5))" | sed 's/[0-9]//g')
     # Send the notification
-    dunstify -i $iconSound -r 2593 -u normal "$volume%  $bar"
+    dunstify -i $iconSound -r 2593 -u normal "$volume%"$'\n'"$bar"
   fi
 }
 

@@ -44,7 +44,7 @@ function send_notification {
   CALC_VALUE=$(($TOTAL * 100 / $MAX_BACKLIGHT))
   bar=$(seq -s "─" 0 $((CALC_VALUE / 5)) | sed 's/[0-9]//g')
   # Send the notification
-  dunstify -i "$icon" -r 5555 -u normal "$CALC_VALUE%   $bar"
+  dunstify -i "$icon" -r 5555 -u normal "$CALC_VALUE%"$'\n'"$bar"
 }
 
 sudo chmod 666 /sys/class/leds/smc::kbd_backlight/brightness

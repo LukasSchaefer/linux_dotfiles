@@ -19,7 +19,7 @@ function send_notification {
   # https://en.wikipedia.org/wiki/Box-drawing_character
   bar=$(seq -s "─" 0 $((brightness / 5)) | sed 's/[0-9]//g')
   # Send the notification
-  dunstify -i "$icon" -r 5555 -u normal "$brightness%  $bar"
+  dunstify -i "$icon" -r 5555 -u normal "$brightness%"$'\n'"$bar"
 }
 
 case $1 in
