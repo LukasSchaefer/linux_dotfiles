@@ -32,3 +32,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 pip install --user advance-touch
 # install fd - better find
 sudo apt install --yes fd-find
+# install neofetch
+sudo apt install --yes neofetch
+# install cmatrix
+git clone git@github.com:abishekvashok/cmatrix.git
+cd cmatrix
+autoreconf -i
+./configure
+make
+make install
+cd ..
