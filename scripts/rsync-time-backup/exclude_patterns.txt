@@ -1,0 +1,12 @@
+- /boot/*
+- /cdrom/*
+- /dev/*
+- /lost+found
+- /media/*
+- /mnt/*
+- /proc/*
+- /run/*
+- /sys/*
+- /timeshift/*
+- /tmp/*
+- /home/lukas/.cache

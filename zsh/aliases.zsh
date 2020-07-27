@@ -24,6 +24,13 @@ alias top="top -o cpu"
 alias htop="htop --sort-key PERCENT_CPU"
 
 # -------------------------------------------------------------------
+# Useful Scripts
+# -------------------------------------------------------------------
+
+alias run_backup="if test -d /media/lukas/Sandisk/backup; then /home/lukas/dotfiles/scripts/rsync-time-backup/rsync_tmbackup.sh / /media/lukas/Sandisk/backup/ /home/lukas/dotfiles/scripts/rsync-time-backup/exclude_patterns.txt; else echo 'Backup disk /media/lukas/Sandisk not available'; fi"
+alias restore_backup="if test -d /media/lukas/Sandisk/backup; then /home/lukas/dotfiles/scripts/rsync-time-backup/recover.sh /media/lukas/Sandisk/backup/ / ; else echo 'Backup disk /media/lukas/Sandisk not available'; fi"
+
+# -------------------------------------------------------------------
 # Folders And Files
 # -------------------------------------------------------------------
 
@@ -41,8 +48,10 @@ alias db="cd ~/Dropbox"
 alias dropbox="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias wallpaper="cd ~/Pictures/Wallpapers"
+alias pnp="cd ~/Documents/PnP"
+alias phd="cd ~/Documents/University/PhD"
 
 # Overall important files
-alias zshrc="mvim ~/linux_dotfiles/zsh/zshrc"
-alias aliases="mvim ~/linux_dotfiles/zsh/aliases.zsh"
-alias vimrc="vim ~/linux_dotfiles/vimrc"
+alias zshrc="vim ~/dotfiles/zsh/zshrc"
+alias aliases="vim ~/dotfiles/zsh/aliases.zsh"
+alias vimrc="vim ~/dotfiles/vimrc"
