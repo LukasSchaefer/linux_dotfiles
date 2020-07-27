@@ -27,21 +27,6 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvt
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start program launcher
-bindsym $mod+d exec rofi -show run -lines 6 -eh 2 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -font "System San Francisco Display 18"
-# bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85"
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -182,6 +167,38 @@ exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
 # exec --no-startup-id i3-msg 'workspace 8:; exec  /snap/bin/discord'
 # exec --no-startup-id i3-msg 'workspace 9:; exec  /snap/bin/spotify'
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start program launcher
+bindsym $mod+d exec rofi -show run -lines 6 -eh 2 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -font "System San Francisco Display 18"
+# bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85"
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+
+# launch categorized menu
+bindsym $mod+z exec --no-startup-id morc_menu
+
+# Application shortcuts
+# start a terminal
+bindsym $mod+Return exec urxvt
+# start ranger
+bindsym $mod+Shift+Ctrl+r exec  /usr/bin/urxvt -e ranger
+# start firefox
+bindsym $mod+Shift+Ctrl+f exec /usr/bin/firefox
+# start discord
+bindsym $mod+Shift+Ctrl+d exec /snap/bin/discord
+# start mendeley
+bindsym $mod+Shift+Ctrl+y exec /usr/bin/mendeleydesktop
+# start typora
+bindsym $mod+Shift+Ctrl+t exec /usr/bin/typora
+# start spotify
+bindsym $mod+Shift+Ctrl+s exec /snap/bin/spotify
+# start mailspring
+bindsym $mod+Shift+Ctrl+m exec /snap/bin/mailspring
+# start minetime
+bindsym $mod+Shift+Ctrl+c exec /usr/bin/minetime
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
