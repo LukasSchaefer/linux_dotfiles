@@ -51,7 +51,10 @@ module-margin-right = 2
 
 
 font-0 = Siji:style=Regular:size=18;4
-font-1 = SanFranciscoDisplay Nerd Font:style=Regular:size=18;4
+;font-1 = SanFranciscoDisplay Nerd Font:style=Regular:size=18;4
+font-1 = San Francisco Display:style=Regular:size=18;4
+font-2 = Font Awesome 5 Free Solid:style=Solid:size=18;4
+font-3 = Font Awesome 5 Brands:style=Regular:size=18;4
 
 modules-left = i3
 modules-center = battery backlight pulseaudio spotify previous playpause next
@@ -455,9 +458,9 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 90
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
 label =  %temperature-c%
