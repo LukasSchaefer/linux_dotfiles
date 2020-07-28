@@ -26,6 +26,11 @@ alias htop="htop --sort-key PERCENT_CPU"
 # alias for better find
 alias fd="fdfind"
 
+# alias for uxplay --> mirror ios device to linux
+alias airplay="uxplay"
+alias imirror="uxplay"
+alias airmirror="uxplay"
+
 # -------------------------------------------------------------------
 # Useful Scripts
 # -------------------------------------------------------------------
@@ -52,6 +57,7 @@ alias dropbox="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias wallpaper="cd ~/Pictures/Wallpapers"
 alias pnp="cd ~/Documents/PnP"
+alias dnd="cd ~/Documents/PnP/DnD"
 alias phd="cd ~/Documents/University/PhD"
 
 # Overall important files

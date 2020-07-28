@@ -7,6 +7,7 @@ sudo apt install --yes okular
 # install tex
 sudo apt install --yes texlive-full
 sudo apt install --yes texstudio
+sudo apt install --yes pdf-presenter-console
 
 # install typora - markdown reader
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
