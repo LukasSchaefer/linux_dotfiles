@@ -10,11 +10,10 @@ output = subprocess.check_output(["bt", "list"])
 tabs = output.decode("utf-8").strip().split("\n")
 # each tab is written as "<id>\t<title>\t<url>"
 tabs = [t.split("\t") for t in tabs]
-print(tabs)
 # hold title and urls
 tabs = [(t[1], t[2]) for t in tabs]
 
-# find publications
+# find publications by keywords
 publications = []
 for title, url in tabs:
     for keyword in KEYWORDS:

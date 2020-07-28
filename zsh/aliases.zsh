@@ -31,6 +31,11 @@ alias airplay="uxplay"
 alias imirror="uxplay"
 alias airmirror="uxplay"
 
+# alias for send publications
+alias sendpubs="~/.scripts/send_publications.py"
+alias sendpublications="~/.scripts/send_publications.py"
+alias send_publications="~/.scripts/send_publications.py"
+
 # -------------------------------------------------------------------
 # Useful Scripts
 # -------------------------------------------------------------------
