@@ -29,7 +29,6 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    # geometry = "300x5-30+20"
     geometry = "380x20-30+20"
 
     # Show how many messages are currently hidden (because of geometry).
@@ -87,7 +86,7 @@
 
     ### Text ###
 
-    font = Monospace 12
+    font = Monospace 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -177,7 +176,7 @@
 
     # Paths to default icons.
     # icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    icon_path = /usr/share/icons/Faba/48x48/notifications/:/usr/share/icons/Faba/24x24/panel/:/usr/share/icons/Faba/16x16/status/:/usr/share/icons/Faba/16x16/devices/:/usr/share/icons/Faba/16x16/mimetypes/:/usr/share/icons/Faba/16x16/notifications/:/usr/share/icons/Faba/16x16/emblems/
+    icon_path = /usr/share/icons/Faba/48x48/notifications/:/usr/share/icons/Faba/24x24/panel/:/usr/share/icons/Faba/16x16/status/:/usr/share/icons/Faba/16x16/devices/:/usr/share/icons/Faba/16x16/mimetypes/:/usr/share/icons/Faba/16x16/notifications/:/usr/share/icons/Faba/16x16/emblems/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
 
@@ -314,6 +313,7 @@
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
