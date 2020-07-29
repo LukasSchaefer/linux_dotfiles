@@ -138,6 +138,15 @@ let g:airline_theme='angr' "angr
 "disableing showing of trailing in current file
 let g:airline#extensions#whitespace#show_message = 0
 
+set guifont=MesloLGL\ Nerd\ Font\ 10
+
+" testing rounded separators (extra-powerline-symbols):
+let g:airline_left_sep = "\uE0B4"
+let g:airline_right_sep = "\uE0B6"
+
+" set the CN (column number) symbol:
+let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
+
 " => NERDTree setup
 """""""""""""""""""""""""""""
 " toggle NerdTree
