@@ -57,3 +57,6 @@ sudo apt install --yes telegram-desktop
 
 # install htop
 sudo apt install --yes htop
+
+# install pdfshuffler
+sudo apt install --yes pdfshuffler

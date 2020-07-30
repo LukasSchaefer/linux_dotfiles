@@ -238,7 +238,8 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-underline = #4bffdc
-label = %percentage_used%%
+label = %gb_used%
+; label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
