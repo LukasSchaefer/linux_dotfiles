@@ -11,8 +11,14 @@ sudo apt install --yes i3-gaps
 # install i3 blocks
 sudo apt install --yes i3blocks
 
+# install urxvt terminal
+sudo apt install -y rxvt-unicode
+
 # install pavucontrol for volume control
 sudo apt install --yes pavucontrol
+
+# install playerctl for music control
+sudo apt install --yes playerctl
 
 # install kbdd for keyboard layout management
 sudo apt install --yes kbdd
@@ -20,9 +26,9 @@ sudo apt install --yes kbdd
 # link i3 config and statusbar
 rm -rf ~/.config/i3/*
 ln -s ~/dotfiles/i3/config ~/.config/i3/config
-ln -s ~/dotfiles/i3status.conf ~/.config/i3/i3status.conf
-ln -s ~/dotfiles/i3blocks.conf ~/.config/i3/i3blocks.conf
-ln -s ~/dotfiles/scripts ~/.config/i3/scripts
+ln -s ~/dotfiles/i3/i3status.conf ~/.config/i3/i3status.conf
+ln -s ~/dotfiles/i3/i3blocks.conf ~/.config/i3/i3blocks.conf
+ln -s ~/dotfiles/i3/scripts ~/.config/i3/scripts
 
 # install fancy lock screen
 sudo apt install --yes i3lock-fancy

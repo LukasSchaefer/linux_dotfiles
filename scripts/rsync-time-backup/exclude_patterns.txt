@@ -9,4 +9,4 @@
 - /sys/*
 - /timeshift/*
 - /tmp/*
-- /home/lukas/.cache
+- /home/lukas/*

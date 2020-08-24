@@ -36,12 +36,21 @@ alias sendpubs="~/.scripts/send_publications.py"
 alias sendpublications="~/.scripts/send_publications.py"
 alias send_publications="~/.scripts/send_publications.py"
 
+# track load
+alias cpuload="watch -n.1 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
+alias memload="watch -n.1 'cat /proc/meminfo | grep \"^MemTotal\|^Active:\|^Inactive:\"'"
+
 # -------------------------------------------------------------------
 # Useful Scripts
 # -------------------------------------------------------------------
 
-alias run_backup="if test -d /media/lukas/Sandisk/backup; then /home/lukas/dotfiles/scripts/rsync-time-backup/rsync_tmbackup.sh / /media/lukas/Sandisk/backup/ /home/lukas/dotfiles/scripts/rsync-time-backup/exclude_patterns.txt; else echo 'Backup disk /media/lukas/Sandisk not available'; fi"
-alias restore_backup="if test -d /media/lukas/Sandisk/backup; then /home/lukas/dotfiles/scripts/rsync-time-backup/recover.sh /media/lukas/Sandisk/backup/ / ; else echo 'Backup disk /media/lukas/Sandisk not available'; fi"
+# backup scripts
+alias backup="python3 ~/.scripts/rsync-time-backup/backup.py"
+alias list_backups="python3 ~/.scripts/rsync-time-backup/backup.py --list"
+alias run_backup_home="python3 ~/.scripts/rsync-time-backup/backup.py --name home"
+alias restore_backup_home="python3 ~/.scripts/rsync-time-backup/backup.py --restore --name home"
+alias run_backup_root="python3 ~/.scripts/rsync-time-backup/backup.py --name root"
+alias restore_backup_root="python3 ~/.scripts/rsync-time-backup/backup.py --restore --name root"
 
 # -------------------------------------------------------------------
 # Folders And Files
@@ -73,3 +82,4 @@ alias i3config="vim ~/.config/i3/config"
 alias polybarconfig="vim ~/.config/polybar/config"
 alias rangerconf="vim ~/.config/ranger/rc.conf"
 alias dunstrc="vim ~/.config/dunst/dunstrc"
+alias roficonfig="vim ~/.config/rofi/config.rasi"

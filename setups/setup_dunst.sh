@@ -7,14 +7,16 @@ git clone https://github.com/dunst-project/dunst.git
 cd dunst
 make
 sudo make install
+cd ..
+rm -rf dunst
 
 # optional dunstify
 cp -vs $(pwd)/dunstify ~/.local/bin/
 
 # install icon theme for dunst notifications
-sudo add-apt-repository -u ppa:snwh/ppa
+sudo add-repository -u ppa:snwh/ppa
 sudo apt update
-sudo apt-get install faba-icon-theme
+sudo apt install --yes faba-icon-theme
 # manual installation (outdated)
 # git clone git@github.com:snwh/faba-icon-theme.git
 # cd faba-icon-theme

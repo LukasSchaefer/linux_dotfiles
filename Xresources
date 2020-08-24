@@ -1,4 +1,5 @@
-#include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
+!#include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
+#include "/home/lukas/.Xresources-themes/nord.Xresources"
 
 Xft.dpi:       140
 Xft.antialias: true
@@ -65,7 +66,8 @@ URxvt.internalBorder: 5
 ! URxvt.shading:		15
 
 !! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+urxvt*perl-lib: /usr/lib/urxvt/perl/
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
@@ -74,13 +76,10 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-launcher: /snap/bin/chromium
-URxvt.urlLauncher: /snap/bin/chromium
+URxvt.url-launcher: /usr/bin/google-chrome
+URxvt.urlLauncher: /usr/bin/google-chrome
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
 URxvt.keyboard-select.clipboard: true
-
-! Rofi theme
-! rofi.theme: /home/lukas/.local/share/rofi/themes/Arc-Dark.rasi
-! rofi.theme: /home/lukas/.local/share/rofi/themes/slate.rasi
-rofi.theme: /home/lukas/.local/share/rofi/themes/custom_arc_slate.rasi
+urxvt*matcher.button: 1
+urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]

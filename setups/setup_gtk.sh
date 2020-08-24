@@ -8,15 +8,11 @@ ln -s ~/dotfiles/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 # install Papirus icon theme
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.local/share/icons" sh
 
-# install autoconf
-sudo apt install --yes autoconf
+# install dependencies
+sudo apt install --yes autoconf automake pkg-config libgtk-3-dev gnome-themes-standard gtk2-engines-murrine
 
 # install Arch GTK theme
-git clone https://github.com/horst3180/arc-theme --depth 1 ~/arc-theme && cd ~/arc-theme
-./autogen.sh --prefix=/usr
-sudo make install
-cd
-rm -rf ~/arc-theme
+sudo apt install --yes arc-theme
 
 # install lxappearance
 sudo apt install lxappearance

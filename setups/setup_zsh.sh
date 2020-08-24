@@ -35,10 +35,15 @@ sudo apt install --yes fd-find
 # install neofetch
 sudo apt install --yes neofetch
 # install cmatrix
+sudo apt install libncurses5-dev
 git clone git@github.com:abishekvashok/cmatrix.git
 cd cmatrix
 autoreconf -i
 ./configure
 make
-make install
+sudo make install
 cd ..
+rm -rf cmatrix
+
+# change shell to zsh
+chsh -s $(which zsh)

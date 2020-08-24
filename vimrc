@@ -1,4 +1,4 @@
-set nocompatible
+ set nocompatible
 filetype off
 set noshowmode
 
@@ -36,6 +36,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'flrnprz/plastic.vim'
 Plugin 'skielbasa/vim-material-monokai'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'kristijanhusak/vim-hybrid-material'
 
@@ -122,7 +123,8 @@ set background=dark
 set t_Co=16
 "colorscheme molokai_dark
 "colorscheme plastic
-colorscheme material-monokai
+"colorscheme material-monokai
+colorscheme nord
 
 " __________________________________ PLUGIN SETTINGS ______________________________________
 "=> Airline setup 
@@ -132,7 +134,8 @@ set laststatus=2
 " "let g:airline#extensions#tabline#enabled = 1
 " fancy powerline fonts
 let g:airline_powerline_fonts = 1
-let g:airline_theme='angr' "angr
+"let g:airline_theme='angr'
+let g:airline_theme='nord'
 "let g:airline_left_sep = ''
 "let g:airline_right_sep = ''
 "disableing showing of trailing in current file

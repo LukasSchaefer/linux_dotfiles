@@ -8,7 +8,8 @@ cd rofi-themes
 ./install
 cd ..
 rm -rf rofi-themes
-ln -s ~/dotfiles/custom_arc_slate.rafi  ~/.local/share/rofi/themes
+ln -s /home/lukas/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
+ln -s /home/lukas/dotfiles/rofi/custom_nord.rasi ~/.local/share/rofi/themes
 
 # install calculator
 # install dependencies
@@ -24,3 +25,4 @@ make
 sudo make install
 cd ../..
 rm -rf rofi-calc
+

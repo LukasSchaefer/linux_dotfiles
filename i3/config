@@ -1,5 +1,6 @@
 # set command to mod key
 set $mod Mod4
+set $mod2 Mod1
 
 # source: https://github.com/bookercodes/dotfiles/blob/ubuntu/.i3/config (inspired of Firefox Darker Arc Theme)
 set $bg-color 	         #2f343f
@@ -52,8 +53,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation
-bindsym $mod+Shift+v split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+Shift+v split h;exec dunstify -t 1000 'tile horizontally'
+bindsym $mod+v split v;exec dunstify -t 1000 'tile vertically'
 bindsym $mod+q split toggle
 
 # enter fullscreen mode for the focused container
@@ -86,8 +87,10 @@ bindsym $mod+Ctrl+p workspace prev
 set $ws1 1:
 set $ws2 2
 set $ws3 3
-#set $ws4 4:
-set $ws4 4:
+# chrome version:
+set $ws4 4:
+# firefox version:
+# set $ws4 4:
 set $ws5 5
 set $ws6 6
 set $ws7 7:
@@ -105,17 +108,6 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 
-# Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-bindsym $mod+Ctrl+9 move container to workspace $ws9
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -127,8 +119,14 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
+# Move focused workspace to outputs (monitors)
+bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+Ctrl+h move workspace to output left
+
 # Open applications on specific workspaces
+# find class with `xprop | awk '/WM_CLASS/ { print $4 }'`
 assign [class="Chromium"] $ws4
+assign [class="Google-chrome"] $ws4
 assign [class="Firefox"] $ws4
 assign [class="Mendeley Desktop"] $ws7
 assign [class="discord"] $ws8
@@ -136,7 +134,8 @@ for_window [class="Spotify"] move to workspace $ws9
 
 # Autostart applications
 exec_always xrdb .Xresources
-exec_always --no-startup-id feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-xl633d.png'
+# exec_always --no-startup-id feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-xl633d.png'
+exec_always --no-startup-id feh --no-fehbg --bg-scale '/home/lukas/Pictures/Wallpapers/wallhaven-p8mpgm.jpg'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id compton -f
 exec --no-startup-id nm-applet
@@ -144,8 +143,9 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
-exec --no-startup-id start_conky_maia
+#exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 10 -locker blurlock
+#exec --no-startup-id ibus-daemon
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -161,9 +161,9 @@ exec_always xcape -e 'Control_L=Escape'
 
 # start firefox and terminal on start
 exec --no-startup-id i3-msg 'workspace 1:; exec  /usr/bin/urxvt'
-# exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome'
-## exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
-exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome'
+# exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
+# exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
 # exec --no-startup-id i3-msg 'workspace 8:; exec  /snap/bin/discord'
 # exec --no-startup-id i3-msg 'workspace 9:; exec  /snap/bin/spotify'
@@ -172,7 +172,11 @@ exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec rofi -show run -lines 6 -eh 2 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -font "System San Francisco Display 18"
+ bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec "rofi -show combi -combi-modi drun,run,ssh,window"
+# calculate command
+bindsym $mod+c exec --no-startup-id LC_NUMERIC=en_US.UTF-8 rofi -show calc
+
 # bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85"
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
@@ -196,7 +200,7 @@ bindsym $mod+Shift+Ctrl+d exec /snap/bin/discord
 # start mendeley
 bindsym $mod+Shift+Ctrl+y exec /usr/bin/mendeleydesktop
 # start typora
-bindsym $mod+Shift+Ctrl+t exec /usr/bin/typora
+bindsym $mod+Shift+Ctrl+t exec /usr/bin/telegram-desktop
 # start spotify
 bindsym $mod+Shift+Ctrl+s exec /snap/bin/spotify
 # start mailspring
@@ -214,17 +218,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # screenshot command
 bindsym --release $mod+Shift+Ctrl+4 exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 
-# calculate command
-bindsym $mod+c exec --no-startup-id LC_NUMERIC=en_US.UTF-8 rofi -show calc -modi calc -no-show-match -no-sort -lines 6 -eh 2 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -font "System San Francisco Display 18"
-
 # audio controls
 # change volume or toggle mute
 # bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
 # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec ~/.scripts/volumeControl.sh up
-bindsym XF86AudioLowerVolume exec ~/.scripts/volumeControl.sh down
-bindsym XF86AudioMute exec ~/.scripts/volumeControl.sh mute
+bindsym XF86AudioRaiseVolume exec ~/.scripts/system_status/volumeControl.sh up
+bindsym XF86AudioLowerVolume exec ~/.scripts/system_status/volumeControl.sh down
+bindsym XF86AudioMute exec ~/.scripts/system_status/volumeControl.sh mute
 
 # media controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -234,13 +235,20 @@ bindsym XF86AudioPrev exec playerctl previous
 # brightness control
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec ~/.scripts/brightnessControl.sh up # increase screen brightness
-bindsym XF86MonBrightnessDown exec ~/.scripts/brightnessControl.sh down # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/.scripts/system_status/brightnessControl.sh up # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.scripts/system_status/brightnessControl.sh down # decrease screen brightness
 
 # keyboard brightness control
 # increase/decrease keyboard brightness
-bindsym XF86KbdBrightnessUp exec bash ~/.scripts/keyboard-backlight.sh up
-bindsym XF86KbdBrightnessDown exec bash ~/.scripts/keyboard-backlight.sh down 
+bindsym XF86KbdBrightnessUp exec /home/lukas/.scripts/system_status/keyboard-backlight.sh up
+bindsym XF86KbdBrightnessDown exec /home/lukas/.scripts/system_status/keyboard-backlight.sh down 
+
+# change ibus language menu
+bindsym $mod2+Shift+l exec ~/.scripts/kbd_layout/fcitx_switch.sh
+bindsym $mod2+Shift+e exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout US" && fcitx-remote -s fcitx-keyboard-us && echo 0 > /tmp/fcitx_layout.txt
+bindsym $mod2+Shift+u exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout US" && fcitx-remote -s fcitx-keyboard-us && echo 0 > /tmp/fcitx_layout.txt
+bindsym $mod2+Shift+d exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout DE" && fcitx-remote -s fcitx-keyboard-de && echo 1 > /tmp/fcitx_layout.txt
+bindsym $mod2+Shift+c exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout CH" && fcitx-remote -s googlepinyin && echo 2 > /tmp/fcitx_layout.txt
 
 # Set shut down, restart and locking features
 bindsym $mod+shift+x exec i3lock-fancy

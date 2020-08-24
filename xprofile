@@ -5,7 +5,7 @@
 # setxkbmap -option 'grp:alt_shift_toggle'
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export XMODIFIERS="@im=fcitx"
 
 # map capslock to escape for single press and control for hold
 # setxkbmap -option ctrl:nocaps

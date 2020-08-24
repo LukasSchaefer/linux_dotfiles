@@ -27,6 +27,7 @@ alert = #bd2c40
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 35
 ;offset-x = 1%
@@ -50,15 +51,17 @@ module-margin-left = 1
 module-margin-right = 2
 
 
-font-0 = Siji:style=Regular:size=18;4
-;font-1 = SanFranciscoDisplay Nerd Font:style=Regular:size=18;4
-font-1 = San Francisco Display:style=Regular:size=18;4
-font-2 = Font Awesome 5 Free Solid:style=Solid:size=18;4
-font-3 = Font Awesome 5 Brands:style=Regular:size=18;4
+;font-1 = SanFranciscoDisplay Nerd Font:style=Regular:size=14;4
+font-0 = San Francisco Display:style=Regular:size=16;4
+font-1 = Siji:style=Regular:size=14;4
+font-2 = Font Awesome 5 Free Solid:style=Solid:size=14;4
+font-3 = Font Awesome 5 Brands:style=Regular:size=14;4
 
 modules-left = i3
-modules-center = battery backlight pulseaudio spotify previous playpause next
-modules-right = cpu temperature memory wlan eth date
+modules-center = battery backlight pulseaudio
+; spotify previous playpause next
+modules-right = fcitx_keyboard cpu-info memory-info wlan eth custom-date
+; ibus_keyboard
 
 tray-position = right
 tray-padding = 2
@@ -83,9 +86,34 @@ enable-ipc = true
 type = internal/xwindow
 label = %title:0:30:...%
 
+[module/ibus_keyboard]
+type = custom/script
+exec = /home/lukas/.scripts/kbd_layout/ibus_layout_name.sh
+interval = 1
+
+; left click switch through ibus layouts
+click-left = /home/lukas/.scripts/kbd_layout/ibus_switch.sh
+; right click open ibus menu
+click-right = ibus-setup
+
+format-underline = ${colors.secondary}
+
+[module/fcitx_keyboard]
+type = custom/script
+exec = /home/lukas/.scripts/kbd_layout/fcitx_layout_name.sh
+interval = 1
+
+; left click switch through fcitx layouts
+click-left = /home/lukas/.scripts/kbd_layout/fcitx_switch.sh
+; right click open fcitx menu
+click-right = fcitx-configtool
+
+format-underline = ${colors.secondary}
+
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
+interval = 1
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
@@ -232,14 +260,30 @@ format-prefix-foreground = ${colors.foreground}
 format-underline = #f90000
 label = %percentage:2%%
 
+[module/cpu-info]
+type = custom/script
+interval = 1
+exec = ~/.scripts/system_status/cpu.sh
+click-left = ~/.scripts/system_status/cpu.sh --popup
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+
 [module/memory]
 type = internal/memory
-interval = 2
+interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-underline = #4bffdc
 label = %gb_used%
 ; label = %percentage_used%%
+
+[module/memory-info]
+type = custom/script
+interval = 1
+exec = ~/.scripts/system_status/memory.sh
+click-left = ~/.scripts/system_status/memory.sh --popup
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
 
 [module/wlan]
 type = internal/network
@@ -248,7 +292,8 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+;label-connected = %essid%
+label-connected = "%{A1:gnome-control-center wifi:} %essid%%{A}"
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -294,6 +339,22 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% %time%
+
+[module/custom-date]
+type = internal/date
+interval = 1
+
+date = "  %d.%m.%Y  "
+date-alt =
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date%  %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio

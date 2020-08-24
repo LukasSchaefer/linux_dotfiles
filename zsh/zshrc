@@ -4,16 +4,44 @@ export CLICOLOR=1
 
 # Additional scripts
 source ~/.scripts/functions.zsh 
-source ~/.scripts/stream/selectstreams.sh
-source ~/.scripts/stream/streams.sh
+source ~/.scripts/pdf_functions.zsh 
+
+# Install Ruby Gems to ~/gems'
+export GEM_HOME="$HOME/gems"
+PATH=$PATH:$HOME/gems/bin
+
+# Perl variables
+PATH=$PATH:$HOME/perl5/bin
+PERL5LIB="/home/lukas/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/lukas/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/lukas/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/lukas/perl5"; export PERL_MM_OPT;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lukas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lukas/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lukas/anaconda3/etc/profile.d/conda.sh"
+    else
+        PATH=$HOME/anaconda3/bin:$PATH
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# add local bin to path
+PATH=$PATH:/home/lukas/.local/bin
+
+# remove duplicates in path
+PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/lukas/.oh-my-zsh
-
-# add local bin to path
-export PATH="$PATH:/home/lukas/.local/bin"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -112,25 +140,3 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lukas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lukas/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lukas/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lukas/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-PATH="/home/lukas/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/lukas/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/lukas/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/lukas/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/lukas/perl5"; export PERL_MM_OPT;
