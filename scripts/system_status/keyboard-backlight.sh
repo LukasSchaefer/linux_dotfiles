@@ -47,6 +47,5 @@ function send_notification {
   dunstify -t 1000 -i "$icon" -r 5555 -u normal "$CALC_VALUE%"$'\n'"$bar"
 }
 
-chmod 666 /sys/class/leds/smc::kbd_backlight/brightness
-echo $TOTAL > /sys/class/leds/smc::kbd_backlight/brightness
+echo $TOTAL | sudo /usr/bin/tee /sys/class/leds/smc::kbd_backlight/brightness
 send_notification

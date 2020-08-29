@@ -24,13 +24,13 @@ function send_notification {
 
 case $1 in
   up)
-    # increase the backlight by 5%
-    xbacklight -inc 5
+    # increase the backlight by 10%
+    xbacklight -inc 10
     send_notification
     ;;
   down)
-    # decrease the backlight by 5%
-    xbacklight -dec 5
+    # decrease the backlight by 10%
+    xbacklight -dec 10
     send_notification
     ;;
 esac
