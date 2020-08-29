@@ -182,7 +182,7 @@ def write_backup(script_path, source, target, exclude):
         subprocess.run(("sudo", f"{script_path}", f"{source}", f"{target}"))
     else:
         subprocess.run(("sudo", f"{script_path}", f"{source}", f"{target}", f"{exclude}"))
-    subprocess.run(("dunstify", "-u", "normal", f"Finished backup."))
+    subprocess.run(("dunstify", "-u", "normal", f"Finished backup {source} to {target}."))
 
 
 
@@ -203,7 +203,7 @@ def restore_backup(script_path, source, target):
     # restore backup
     subprocess.run(("dunstify", "-u", "normal", f"Restoring backup from {target} to {source}."))
     subprocess.run(("sudo", f"{script_path}", f"{target}/latest/", f"{source}/"))
-    subprocess.run(("dunstify", "-u", "normal", f"Finished restoration."))
+    subprocess.run(("dunstify", "-u", "normal", f"Finished restoration from {target} to {source}."))
 
 def print_usage():
     print("Usage:")
