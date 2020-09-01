@@ -18,7 +18,7 @@ alias o="xdg-open ."
 alias open="xdg-open"
 
 # sorts top list by cpu default
-alias top="top -o cpu"
+alias top="top -o %CPU"
 
 # use htop with sudo (to show ram/cpu) and also sort for cpu usage
 alias htop="htop --sort-key PERCENT_CPU"
