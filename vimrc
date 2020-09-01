@@ -99,9 +99,6 @@ set nobackup
 set nowb
 set noswapfile
 
-" This enables automatic indentation as you type.
-set tabstop=4
-
 " i want to see at least x lines above/below the cursor
 set scrolloff=10
 
