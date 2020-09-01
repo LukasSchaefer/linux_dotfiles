@@ -39,6 +39,9 @@ rm -rf typora-cobalt-theme
 git clone https://github.com/lostkeys/Typora-Lostkeys-Theme.git
 mv Typora-Lostkeys-Theme/theme/* ~/.config/Typora/themes/
 rm -rf Typora-Lostkeys-Theme
+git clone git@github.com:pantajoe/typora-nord-theme.git
+mv typora-nord-theme/src/* ~/.config/Typora/themes
+rm -rf typora-nord-theme
 
 # install visual studio code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
