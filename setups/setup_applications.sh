@@ -58,6 +58,11 @@ mkdir -p ~/snap/mailspring/common/packages/Arc
 mv MailSpring-Arc-Theme/* ~/snap/mailspring/common/packages/Arc/
 rm -rf MailSpring-Arc-Theme
 
+# install nord theme
+git clone https://github.com/faraadi/mailspring-nord-theme.git
+mkdir -p ~/snap/mailspring/common/packages/Nord
+mv mailspring-nord-theme/* ~/snap/mailspring/common/packages/Nord/
+
 # install conda
 sudo apt install --yes libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
