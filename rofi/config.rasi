@@ -8,15 +8,16 @@ configuration {
     kb-mode-previous: "Control+h,Control+ISO_Left_Tab";
     show-icons: false;
     lines: 7;
-    line-padding: 10;
-    padding: 800;
+    line-padding: 5;
+    line-margin: 5;
+    padding: 400;
     matching: "fuzzy";
     bw: 0;
     separator-style: "none";
     hide-scrollbar: true;
     theme: "/home/lukas/.local/share/rofi/themes/custom_nord.rasi";
-    font: "System San Francisco Display 18";
-/*	width: 50;*/
+    font: "System San Francisco Display 12";
+    width: 50;
 /*	columns: 1;*/
 /*	location: 0;*/
 /*	yoffset: 0;*/

@@ -1,6 +1,6 @@
 ## Linux Dotfiles
 
-This contains my dotfiles including config files for 
+This contains my dotfiles for Dell XPS 15 9500 (i7-10750H with GTX-1650 and 1920 x 1200 Display) including config files configuring
 
 - i3
 - polybar

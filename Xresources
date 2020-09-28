@@ -1,7 +1,7 @@
 !#include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
 #include "/home/lukas/.Xresources-themes/nord.Xresources"
 
-Xft.dpi:       140
+Xft.dpi:       100
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb

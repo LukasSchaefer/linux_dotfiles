@@ -1,6 +1,6 @@
 # set command to mod key
-set $mod Mod4
-set $mod2 Mod1
+set $mod Mod1
+set $mod2 Mod4
 
 # source: https://github.com/bookercodes/dotfiles/blob/ubuntu/.i3/config (inspired of Firefox Darker Arc Theme)
 set $bg-color 	         #2f343f
@@ -240,9 +240,8 @@ bindsym XF86MonBrightnessUp exec ~/.scripts/system_status/brightnessControl.sh u
 bindsym XF86MonBrightnessDown exec ~/.scripts/system_status/brightnessControl.sh down # decrease screen brightness
 
 # keyboard brightness control
-# increase/decrease keyboard brightness
-bindsym XF86KbdBrightnessUp exec /home/lukas/.scripts/system_status/keyboard-backlight.sh up
-bindsym XF86KbdBrightnessDown exec /home/lukas/.scripts/system_status/keyboard-backlight.sh down 
+# toggle keyboard brightness
+bindsym XF86KbdLightOnOff exec /home/lukas/.scripts/system_status/keyboard-backlight.sh
 
 # change ibus language menu
 bindsym $mod2+Shift+l exec ~/.scripts/kbd_layout/fcitx_switch.sh
