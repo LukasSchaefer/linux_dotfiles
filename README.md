@@ -1,6 +1,6 @@
 ## Linux Dotfiles
 
-This contains my dotfiles including config files for 
+This contains my dotfiles for MBP 13" 2015 (2560 x 1600 retina display) including config files configuring
 
 - i3
 - polybar
