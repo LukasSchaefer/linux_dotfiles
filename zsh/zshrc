@@ -46,15 +46,19 @@ export ZSH=/home/lukas/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # powerlevel10k theme
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#source ~/dotfiles/zsh/prompts/custom-p10k-pure.zsh
+
 # POWERLEVEL9K_MODE="awesome-patched"
 # # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 # # use pure prompt
-# source ~/linux_dotfiles/zsh/prompts/custom-p10k-pure.zsh
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -140,3 +144,4 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
