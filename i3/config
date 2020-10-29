@@ -129,6 +129,7 @@ assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
 assign [class="Firefox"] $ws4
 assign [class="Mendeley Desktop"] $ws7
+assign [class="Zotero"] $ws7
 assign [class="discord"] $ws8
 for_window [class="Spotify"] move to workspace $ws9
 
@@ -163,7 +164,7 @@ exec_always xcape -e 'Control_L=Escape'
 
 # start firefox and terminal on start
 exec --no-startup-id i3-msg 'workspace 1:; exec  /usr/bin/urxvt'
-exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome'
+exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome-stable --use-cmd-decoder=validating --use-gl=desktop'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
@@ -194,13 +195,15 @@ bindsym $mod+Shift+Ctrl+r exec  /usr/bin/urxvt -e ranger
 # start firefox
 bindsym $mod+Shift+Ctrl+f exec /usr/bin/firefox
 # start google-chrome
-bindsym $mod+Shift+Ctrl+g exec /usr/bin/google-chrome
+bindsym $mod+Shift+Ctrl+g exec /usr/bin/google-chrome-stable --use-cmd-decoder=validating --use-gl=desktop
 # start chromium
 # bindsym $mod+Shift+Ctrl+g exec /snap/bin/chromium
 # start discord
 bindsym $mod+Shift+Ctrl+d exec /snap/bin/discord
 # start mendeley
 bindsym $mod+Shift+Ctrl+y exec /usr/bin/mendeleydesktop
+# start zotero
+bindsym $mod+Shift+Ctrl+z exec /usr/local/bin/zotero
 # start typora
 bindsym $mod+Shift+Ctrl+t exec /usr/bin/telegram-desktop
 # start spotify
