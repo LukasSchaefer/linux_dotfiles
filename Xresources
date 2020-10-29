@@ -80,7 +80,6 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-launcher: /usr/bin/google-chrome
-URxvt.urlLauncher: /usr/bin/google-chrome
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
 URxvt.keyboard-select.clipboard: true
