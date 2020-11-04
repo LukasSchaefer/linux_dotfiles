@@ -228,9 +228,12 @@ bindsym --release $mod+Shift+Ctrl+4 exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png'
 # bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
 # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec ~/.scripts/system_status/volumeControl.sh up
 bindsym XF86AudioLowerVolume exec ~/.scripts/system_status/volumeControl.sh down
+bindsym $mod2+Shift+u exec ~/.scripts/system_status/volumeControl.sh down
+bindsym XF86AudioRaiseVolume exec ~/.scripts/system_status/volumeControl.sh up
+bindsym $mod2+Shift+i exec ~/.scripts/system_status/volumeControl.sh up
 bindsym XF86AudioMute exec ~/.scripts/system_status/volumeControl.sh mute
+bindsym $mod2+Shift+o exec ~/.scripts/system_status/volumeControl.sh mute
 
 # media controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -240,8 +243,10 @@ bindsym XF86AudioPrev exec playerctl previous
 # brightness control
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec ~/.scripts/system_status/brightnessControl.sh up # increase screen brightness
 bindsym XF86MonBrightnessDown exec ~/.scripts/system_status/brightnessControl.sh down # decrease screen brightness
+bindsym $mod2+Shift+j exec ~/.scripts/system_status/brightnessControl.sh down
+bindsym XF86MonBrightnessUp exec ~/.scripts/system_status/brightnessControl.sh up # increase screen brightness
+bindsym $mod2+Shift+k exec ~/.scripts/system_status/brightnessControl.sh up
 
 # keyboard brightness control
 # toggle keyboard brightness
@@ -250,7 +255,6 @@ bindsym XF86KbdLightOnOff exec /home/lukas/.scripts/system_status/keyboard-backl
 # change ibus language menu
 bindsym $mod2+Shift+l exec ~/.scripts/kbd_layout/fcitx_switch.sh
 bindsym $mod2+Shift+e exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout US" && fcitx-remote -s fcitx-keyboard-us && echo 0 > /tmp/fcitx_layout.txt
-bindsym $mod2+Shift+u exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout US" && fcitx-remote -s fcitx-keyboard-us && echo 0 > /tmp/fcitx_layout.txt
 bindsym $mod2+Shift+d exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout DE" && fcitx-remote -s fcitx-keyboard-de && echo 1 > /tmp/fcitx_layout.txt
 bindsym $mod2+Shift+c exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u normal "Keyboard layout CH" && fcitx-remote -s googlepinyin && echo 2 > /tmp/fcitx_layout.txt
 
