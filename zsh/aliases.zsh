@@ -31,10 +31,14 @@ alias airplay="uxplay"
 alias imirror="uxplay"
 alias airmirror="uxplay"
 
-# alias for send publications
+# alias to send publications
 alias sendpubs="~/.scripts/send_publications.py"
 alias sendpublications="~/.scripts/send_publications.py"
 alias send_publications="~/.scripts/send_publications.py"
+
+# alias to send (filtered) tabs
+alias sendtabs="~/.scripts/send_tabs.py"
+alias send_tabs="~/.scripts/send_tabs.py"
 
 # track load
 alias cpuload="watch -n.1 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"

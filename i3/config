@@ -144,6 +144,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id fcitx
+exec --no-startup-id imwheel
 exec --no-startup-id indicator-cpufreq
 # exec --no-startup-id blueman-applet
 #exec --no-startup-id start_conky_maia
