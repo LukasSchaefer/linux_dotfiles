@@ -3,6 +3,7 @@
 # and/ or telegram (https://github.com/rahiel/telegram-send)
 # browsertabs obtained using brotab (https://github.com/balta2ar/brotab)
 
+import argparse
 import errno
 from pathlib import Path
 import os
@@ -26,6 +27,22 @@ KEYWORDS=[
         "ieee",
 ]
 CONFIG_PATH=os.path.join(Path.home(), ".config/send_publications.conf")
+
+def parse_arguments():
+    """
+    Setup parser
+    :return: parsed arguments
+    """
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--telegram', default=None, action="store_true",
+                        help='Flag that publications should be send to telegram')
+    parser.add_argument('--mail', default=None, action="store_true",
+                        help='Flag that publications should be send via mail')
+    parser.add_argument('--address', default=None, type=str,
+                        help='Mail address to send publications to')
+    args = parser.parse_args()
+    return args
+
 
 def get_config(path):
     """
@@ -146,6 +163,22 @@ def send_mail(address, subject, text):
 
 if __name__ == "__main__":
     use_telegram, use_email, address = get_config(CONFIG_PATH)
+    args = parse_arguments()
+    # overwrite where to send with argparse arguments if provided
+    if args.telegram is not None and args.mail is not None:
+        use_telegram = True
+        use_email = True
+        if args.address is not None:
+            address = args.address
+    elif args.telegram is not None:
+        use_telegram = True
+        use_email = False
+    elif args.mail is not None:
+        use_telegram = False
+        use_email = True
+        if args.address is not None:
+            address = args.address
+
     publications = get_publications()
     # send todos
     for title, url in publications:
