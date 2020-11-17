@@ -35,8 +35,24 @@ unset __conda_setup
 # add local bin to path
 PATH=$PATH:/home/lukas/.local/bin
 
+# add SCII Path for SMAC/ PySC2
+export SC2PATH=/home/lukas/Documents/University/PhD/Research/environments/starcraft/StarCraftII
+
+# add mujoco to library path
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lukas/.mujoco/mujoco200/bin
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lukas/Documents/University/PhD/Research/environments/mujoco/usr/lib64
+# export LDFLAGS="-L/home/lukas/Documents/University/PhD/Research/environments/mujoco/usr/lib64"
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+
+# setup path for MALMO
+# setup JVM for MALMO
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export MALMO_XSD_PATH=/home/lukas/Documents/University/PhD/Research/environments/malmo/MalmoPlatform/Schemas
+
+
 # remove duplicates in path
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+
 
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 
