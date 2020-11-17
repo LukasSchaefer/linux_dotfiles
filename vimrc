@@ -6,7 +6,7 @@ set noshowmode
 imap <C-K> <Esc>
 
 " allow system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 filetype plugin on
 
