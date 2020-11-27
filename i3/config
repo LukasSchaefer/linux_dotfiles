@@ -125,12 +125,16 @@ bindsym $mod+Ctrl+h move workspace to output left
 
 # Open applications on specific workspaces
 # find class with `xprop | awk '/WM_CLASS/ { print $4 }'`
+assign [class="Mailspring"] $ws3
+assign [class="MineTime"] $ws3
+assign [class="TelegramDesktop"] $ws3
 assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
 assign [class="Firefox"] $ws4
 assign [class="Mendeley Desktop"] $ws7
 assign [class="Zotero"] $ws7
 assign [class="discord"] $ws8
+assign [class="teams"] $ws8
 for_window [class="Spotify"] move to workspace $ws9
 
 # Autostart applications
