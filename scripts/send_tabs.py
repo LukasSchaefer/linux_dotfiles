@@ -127,7 +127,7 @@ def get_tabs(keywords, send_all):
     filtered_tabs = []
     for title, url in tabs:
         for keyword in keywords:
-            if keyword in url:
+            if keyword in url or keyword in title:
                 filtered_tabs.append((title, url))
                 break
     return filtered_tabs
