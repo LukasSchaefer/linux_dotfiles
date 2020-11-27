@@ -71,3 +71,8 @@ ob() {
     # open in background
     xdg-open "$1" & disown
 }
+
+wkill() {
+    ID=$(xwininfo | grep "Window id:" | awk '{print $4}')
+    xkill -id $ID
+}
