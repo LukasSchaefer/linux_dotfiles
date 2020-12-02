@@ -196,6 +196,8 @@ bindsym $mod+z exec --no-startup-id morc_menu
 # Application shortcuts
 # start a terminal
 bindsym $mod+Return exec urxvt
+# start terminal in current directory
+bindsym $mod+Shift+Return exec /usr/bin/urxvt -cd "$(cat /tmp/whereami)"
 # start ranger
 bindsym $mod+Shift+Ctrl+r exec  /usr/bin/urxvt -e ranger
 # start firefox

@@ -106,3 +106,6 @@ fi
 
 (( ! p10k_pure_restore_aliases )) || setopt aliases
 'builtin' 'unset' 'p10k_pure_restore_aliases'
+
+# store current directory in temporary file
+pwd > /tmp/whereami

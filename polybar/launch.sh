@@ -1,35 +1,26 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # Terminate already running bar instances
-# killall -q polybar
+killall -q polybar
 
 # Wait until the processes have been shut down
-# while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-#polybar base &
-
-sleep .5
-
-# single monitor setup
-# if ! pgrep -x polybar; then
-#     echo "---" | tee -a /tmp/polybar_mybar.log
-#     polybar mybar >> /tmp/polybar_mybar.log 2>&1 &
-# else
-# 	pkill -USR1 polybar
-# fi
-
-# multiple monitors
-if ! pgrep -x polybar; then
-    if type "xrandr"; then
-      for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$m polybar mybar &
-      done
+if type "xrandr"; then
+    DP13_connected=false
+    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        if [ "$m" = "DP-1-3" ]; then
+            DP13_connected=true
+        fi
+    done
+    if [ "$DP13_connected" = true ]; then
+        polybar eDP11 &
+        polybar DP13 &
     else
-      polybar --reload mybar &
+        polybar --reload master &
     fi
 else
-    pkill -USR1 polybar
+    polybar --reload master &
 fi
 
-echo "Bars launched..."
+echo "Polybar launched..."
