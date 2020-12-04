@@ -6,7 +6,10 @@ sudo apt install --yes ./google-chrome-stable_current_amd64.deb
 rm ./google-chrome-stable_current_amd64.deb
 
 # install mendeley
-sudo apt install --yes mendeleydesktop
+# sudo apt install --yes mendeleydesktop
+
+# Install Zotero (TODO)
+
 # install spotify
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -70,9 +73,8 @@ bash ./Anaconda3-2020.02-Linux-x86_64.sh
 rm -rf Anaconda3-2020.02-Linux-x86_64.sh
 source ~/.zshrc
 
-# minetime
-wget https://github.com/marcoancona/MineTime/releases/download/v1.8.1/MineTime_1.8.1_amd64.deb
-sudo apt install --yes ./MineTime_1.8.1_amd64.deb
+# gnome-calendar
+sudo apt-get install -y gnome-calendar
 
 # install telegram
 sudo apt install --yes telegram-desktop 

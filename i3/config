@@ -126,7 +126,7 @@ bindsym $mod+Ctrl+h move workspace to output left
 # Open applications on specific workspaces
 # find class with `xprop | awk '/WM_CLASS/ { print $4 }'`
 assign [class="Mailspring"] $ws3
-assign [class="MineTime"] $ws3
+assign [class="Gnome-calendar"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
@@ -218,8 +218,8 @@ bindsym $mod+Shift+Ctrl+t exec /usr/bin/telegram-desktop
 bindsym $mod+Shift+Ctrl+s exec /snap/bin/spotify
 # start mailspring
 bindsym $mod+Shift+Ctrl+m exec /snap/bin/mailspring
-# start minetime
-bindsym $mod+Shift+Ctrl+c exec /usr/bin/minetime
+# start gnome calendar
+bindsym $mod+Shift+Ctrl+c exec /usr/bin/gnome-calendar
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
