@@ -4,6 +4,8 @@ git submodule update --init
 bash setups/setup_fonts.sh
 bash setups/setup_xserver.sh
 
+bash setups/setup_screens.sh
+
 # link profile
 rm ~/.profile
 ln -s ~/dotfiles/profile ~/.profile

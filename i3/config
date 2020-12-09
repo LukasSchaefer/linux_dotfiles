@@ -126,6 +126,7 @@ bindsym $mod+Ctrl+h move workspace to output left
 # Open applications on specific workspaces
 # find class with `xprop | awk '/WM_CLASS/ { print $4 }'`
 assign [class="Mailspring"] $ws3
+assign [class="MineTime"] $ws3
 assign [class="Gnome-calendar"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [class="Chromium"] $ws4
@@ -157,6 +158,9 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 #exec --no-startup-id ibus-daemon
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+# launch dual screen script
+exec --no-startup-id $HOME/.screenlayout/start_dual.sh
 
 # start polybar
 exec_always --no-startup-id $HOME/.scripts/spotify/launchlistener.sh

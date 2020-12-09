@@ -72,14 +72,21 @@ cursor-scroll = ns-resize
 enable-ipc = true
 
 
-[bar/eDP11]
+[bar/eDP-1-1]
 inherit = bar/master
 ; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
 monitor = eDP-1-1
 
-[bar/DP13]
+[bar/DP-1-1]
 inherit = bar/master
-; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = DP-1-1
+
+[bar/DP-1-2]
+inherit = bar/master
+monitor = DP-1-2
+
+[bar/DP-1-3]
+inherit = bar/master
 monitor = DP-1-3
 
 

@@ -7,15 +7,16 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if type "xrandr"; then
-    DP13_connected=false
+    DP_connected="none"
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        if [ "$m" = "DP-1-3" ]; then
-            DP13_connected=true
+        if [ "$m" != "eDP-1-1" ]; then
+            DP_connected=$m
         fi
     done
-    if [ "$DP13_connected" = true ]; then
-        polybar eDP11 &
-        polybar DP13 &
+    if [ "$DP_connected" != "none" ]; then
+        echo "Start polybar on eDP-1-1 and $DP_connected"
+        polybar $DP_connected &
+        polybar eDP-1-1 &
     else
         polybar --reload master &
     fi
