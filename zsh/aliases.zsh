@@ -44,6 +44,9 @@ alias send_tabs="~/.scripts/send_tabs.py"
 alias cpuload="watch -n.1 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 alias memload="watch -n.1 'cat /proc/meminfo | grep \"^MemTotal\|^Active:\|^Inactive:\"'"
 
+# run command with GPU (Nvidia Prime mode (`nvidia-settings`) set to on-demand)
+alias nvidia="__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0"
+
 # -------------------------------------------------------------------
 # Useful Scripts
 # -------------------------------------------------------------------
