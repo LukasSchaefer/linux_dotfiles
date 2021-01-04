@@ -60,7 +60,7 @@ font-3 = Font Awesome 5 Brands:style=Regular:size=12;4
 modules-left = i3
 modules-center = battery backlight pulseaudio
 ; spotify previous playpause next
-modules-right = fcitx_keyboard cpu-info memory-info wlan eth custom-date
+modules-right = fcitx_keyboard cpu-info gpu-info memory-info wlan eth custom-date
 ; ibus_keyboard
 
 tray-position = right
@@ -71,19 +71,34 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 enable-ipc = true
 
+[bar/eDP-1]
+inherit = bar/master
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = eDP-1
 
 [bar/eDP-1-1]
 inherit = bar/master
-; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
 monitor = eDP-1-1
+
+[bar/DP-1]
+inherit = bar/master
+monitor = DP-1
 
 [bar/DP-1-1]
 inherit = bar/master
 monitor = DP-1-1
 
+[bar/DP-2]
+inherit = bar/master
+monitor = DP-2
+
 [bar/DP-1-2]
 inherit = bar/master
 monitor = DP-1-2
+
+[bar/DP-3]
+inherit = bar/master
+monitor = DP-3
 
 [bar/DP-1-3]
 inherit = bar/master
@@ -273,6 +288,13 @@ type = custom/script
 interval = 1
 exec = ~/.scripts/system_status/cpu.sh
 click-left = ~/.scripts/system_status/cpu.sh --popup
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+
+[module/gpu-info]
+type = custom/script
+interval = 1
+exec = ~/.scripts/system_status/gpu.sh
 format-prefix-foreground = ${colors.foreground}
 format-underline = #f90000
 
