@@ -5,7 +5,7 @@ case "$1" in
         ;;
     *)
         # get CPU load in percentage
-        cpu_util=$(mpstat | grep "all" | awk '{print $3}')
+        cpu_util=$(mpstat 1 1| grep "all" | head -1 | awk '{print $3}')
         # get cpu temperature
         cpu_temp=$(sensors | grep "Package id 0:" | head -1 | awk '{print $4}')
         # remove + and floating point digit
