@@ -16,7 +16,6 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 sudo apt-get update && sudo apt-get install spotify-client
 
 sudo apt-get install --yes qt5-style-plugins
-sudo apt install --yes okular
 sudo apt install --yes zathura
 mkdir ~/.config/zathura
 ln -s ~/dotfiles/zathura/zathurarc ~/.config/zathura/zathurarc
