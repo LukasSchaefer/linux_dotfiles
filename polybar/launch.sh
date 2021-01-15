@@ -18,6 +18,7 @@ if type "xrandr"; then
         echo "Start polybar on eDP-1-1 and $DP_connected"
         polybar $DP_connected &
         polybar eDP-1 &
+        polybar eDP-1-1 &
     else
         polybar --reload master &
     fi
