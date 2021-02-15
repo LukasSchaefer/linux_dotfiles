@@ -58,9 +58,9 @@ font-2 = Font Awesome 5 Free Solid:style=Solid:size=12;4
 font-3 = Font Awesome 5 Brands:style=Regular:size=12;4
 
 modules-left = i3
-modules-center = battery backlight pulseaudio
+modules-center = battery backlight pulseaudio sound-source
 ; spotify previous playpause next
-modules-right = fcitx_keyboard cpu-info gpu-info memory-info wlan eth custom-date
+modules-right = fcitx-keyboard cpu-info gpu-info memory-info wlan eth custom-date
 ; ibus_keyboard
 
 tray-position = right
@@ -121,7 +121,7 @@ click-right = ibus-setup
 
 format-underline = ${colors.secondary}
 
-[module/fcitx_keyboard]
+[module/fcitx-keyboard]
 type = custom/script
 exec = /home/lukas/.scripts/kbd_layout/fcitx_layout_name.sh
 interval = 1
@@ -385,6 +385,14 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date%  %time%
+
+[module/sound-source]
+type = custom/script
+exec = /home/lukas/.scripts/system_status/audio_source_name.sh
+interval = 1
+
+; left click switch audio source
+click-left = /home/lukas/.scripts/system_status/audio_source_switch.sh
 
 [module/pulseaudio]
 type = internal/pulseaudio
