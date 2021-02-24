@@ -3,11 +3,20 @@ SOURCE_NAME=$(pacmd info | grep "Default sink name" | head -1 | awk '{print $4}'
 # check if Focusrite interface used or not
 if [[ "$SOURCE_NAME" == *"Focusrite_Scarlett_2i2"* ]]; then
     # change sound to built-in speaker
-    pacmd set-default-sink 4
+    TARGET_NAME="pci-0000"
 elif [[ "$SOURCE_NAME" == *"pci-0000"* ]]; then
     # change sound to audio interface
-    pacmd set-default-sink 5
+    TARGET_NAME="Focusrite_Scarlett_2i2"
 else
-    # change sound to built-in speaker
-    pacmd set-default-sink 4
+    # default otherwise change sound to built-in speaker
+    TARGET_NAME="pci-0000"
 fi
+
+i=0
+while [[ "$SOURCE_NAME" != *$TARGET_NAME* ]]
+do
+    pacmd set-default-sink $i
+    SOURCE_NAME=$(pacmd info | grep "Default sink name" | head -1 | awk '{print $4}')
+    echo "$i: $SOURCE_NAME --> $TARGET_NAME"
+    i=$[$i+1]
+done
