@@ -24,8 +24,8 @@ pdfmerge() {
 }
 
 compresspdf() {
-    if ! [ "$#" -ge 2 ]; then
-        echo 'Usage: compresspdf [input file] [output file] [screen|ebook|printer|prepress]'
+    if ! [ "$#" -ge 1 ]; then
+        echo 'Usage: compresspdf [input file] <[output file]> <[screen|ebook|printer|prepress]>'
         return
     fi
 
@@ -34,5 +34,10 @@ compresspdf() {
         return
     fi
 
-    gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
+    if [ "$#" -eq 1 ]; then
+        gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="temp.pdf" "$1"
+        mv "temp.pdf" "$1"
+    else
+        gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dPDFSETTINGS=/${3:-"screen"} -dCompatibilityLevel=1.4 -sOutputFile="$2" "$1"
+    fi
 }
