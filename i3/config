@@ -173,14 +173,20 @@ exec_always xcape -e 'Control_L=Escape'
 # exec_always xmodmap -e "clear lock" #disable caps lock switch
 # exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
-# start firefox and terminal on start
+# start terminal, chrome, mailspring, minetime and Discord on start
 exec --no-startup-id i3-msg 'workspace 1:; exec  /usr/bin/urxvt'
 exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome-stable --use-cmd-decoder=validating --use-gl=desktop'
+exec --no-startup-id i3-msg 'workspace 8:; exec /usr/bin/discord'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/mailspring'
+exec --no-startup-id i3-msg 'workspace 3; exec /opt/Minetime/minetime'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
 # exec --no-startup-id i3-msg 'workspace 8:; exec  /snap/bin/discord'
 # exec --no-startup-id i3-msg 'workspace 9:; exec  /snap/bin/spotify'
+
+# on launch make workspace 3 stacking
+for_window [workspace=$ws3] layout stacking
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -247,6 +253,7 @@ bindsym XF86AudioRaiseVolume exec ~/.scripts/system_status/volumeControl.sh up
 bindsym $mod2+Shift+i exec ~/.scripts/system_status/volumeControl.sh up
 bindsym XF86AudioMute exec ~/.scripts/system_status/volumeControl.sh mute
 bindsym $mod2+Shift+o exec ~/.scripts/system_status/volumeControl.sh mute
+bindsym $mod2+Shift+p exec ~/.scripts/system_status/audio_source_switch.sh
 
 # media controls
 bindsym XF86AudioPlay exec playerctl play-pause
