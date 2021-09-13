@@ -88,9 +88,11 @@ set $ws1 1:
 set $ws2 2
 set $ws3 3
 # chrome version:
-set $ws4 4:
+# set $ws4 4:
 # firefox version:
 # set $ws4 4:
+# general version:
+set $ws4 4:
 set $ws5 5
 set $ws6 6
 set $ws7 7:
@@ -132,6 +134,7 @@ assign [class="TelegramDesktop"] $ws3
 assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
 assign [class="Firefox"] $ws4
+assign [class="Brave-browser"] $ws4
 assign [class="Mendeley Desktop"] $ws7
 assign [class="Zotero"] $ws7
 assign [class="discord"] $ws8
@@ -173,12 +176,12 @@ exec_always xcape -e 'Control_L=Escape'
 # exec_always xmodmap -e "clear lock" #disable caps lock switch
 # exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
-# start terminal, chrome, mailspring, minetime and Discord on start
+# start terminal, chrome, mailspring, calendar and Discord on start
 exec --no-startup-id i3-msg 'workspace 1:; exec  /usr/bin/urxvt'
-exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/google-chrome-stable --use-cmd-decoder=validating --use-gl=desktop'
+exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/brave-browser'
 exec --no-startup-id i3-msg 'workspace 8:; exec /usr/bin/discord'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/mailspring'
-exec --no-startup-id i3-msg 'workspace 3; exec /opt/Minetime/minetime'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-calendar'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
@@ -215,6 +218,8 @@ bindsym $mod+Shift+Ctrl+r exec  /usr/bin/urxvt -e ranger
 bindsym $mod+Shift+Ctrl+f exec /usr/bin/firefox
 # start google-chrome
 bindsym $mod+Shift+Ctrl+g exec /usr/bin/google-chrome-stable --use-cmd-decoder=validating --use-gl=desktop
+# start brave-browser
+bindsym $mod+Shift+Ctrl+b exec /usr/bin/brave-browser
 # start chromium
 # bindsym $mod+Shift+Ctrl+g exec /snap/bin/chromium
 # start discord
