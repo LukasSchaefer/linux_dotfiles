@@ -37,3 +37,5 @@ set recolor                     "false"
 set recolor-keephue             "false"
 
 map <C-a> feedkeys ":exec evince %<Return>"
+
+set browser "brave-browser %s"
