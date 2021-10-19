@@ -5,7 +5,7 @@ eDP_connected="none"
 for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     if [[ $m != "eDP"* ]] ; then
         DP_connected=$m
-        DP_resolution=$(xrandr -q | grep 'DP-2' | awk '{print $3}' | sed 's/+.*//')
+        DP_resolution=$(xrandr -q | awk "/$m/{getline; print}" | awk '{print $1}')
     else
         eDP_connected=$m
     fi
