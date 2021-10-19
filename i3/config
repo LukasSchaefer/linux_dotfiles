@@ -245,7 +245,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # screenshot command
+# save and copy
 bindsym --release $mod+Shift+Ctrl+4 exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+# only copy
+bindsym --release $mod+Shift+Ctrl+5 exec scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # audio controls
 # change volume or toggle mute
