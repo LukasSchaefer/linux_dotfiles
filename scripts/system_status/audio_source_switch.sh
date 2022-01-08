@@ -2,6 +2,9 @@
 SOURCE_NAME=$(pacmd info | grep "Default sink name" | head -1 | awk '{print $4}')
 # check if Focusrite interface used or not
 if [[ "$SOURCE_NAME" == *"Focusrite_Scarlett_2i2"* ]]; then
+    # change sound to Schiit Modi
+    TARGET_NAME="Schiit_Audio_USB_Modi"
+elif [[ "$SOURCE_NAME" == *"Schiit_Audio_USB_Modi"* ]]; then
     # change sound to built-in speaker
     TARGET_NAME="pci-0000"
 elif [[ "$SOURCE_NAME" == *"pci-0000"* ]]; then
