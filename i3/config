@@ -130,6 +130,7 @@ bindsym $mod+Ctrl+h move workspace to output left
 assign [class="Mailspring"] $ws3
 assign [class="MineTime"] $ws3
 assign [class="Gnome-calendar"] $ws3
+assign [class="Todoist"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
@@ -182,6 +183,7 @@ exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/brave-browser'
 exec --no-startup-id i3-msg 'workspace 8:; exec /usr/bin/discord'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/mailspring'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-calendar'
+exec --no-startup-id i3-msg 'workspace 3; exec /snap/bin/todoist'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace 7:; exec  /usr/bin/mendeleydesktop'
@@ -228,8 +230,8 @@ bindsym $mod+Shift+Ctrl+d exec /snap/bin/discord
 bindsym $mod+Shift+Ctrl+y exec /usr/bin/mendeleydesktop
 # start zotero
 bindsym $mod+Shift+Ctrl+z exec /usr/local/bin/zotero
-# start typora
-bindsym $mod+Shift+Ctrl+t exec /usr/bin/telegram-desktop
+# start todoist
+bindsym $mod+Shift+Ctrl+t exec /snap/bin/todoist
 # start spotify
 bindsym $mod+Shift+Ctrl+s exec /snap/bin/spotify
 # start mailspring
