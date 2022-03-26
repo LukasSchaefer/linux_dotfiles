@@ -1,4 +1,16 @@
- set nocompatible
+" Starts vim in non-vi mode
+set nocompatible
+
+" Disable search highlighting
+set nohlsearch
+" Enable incremental search
+set incsearch
+
+" Ignore casing when searching unless..
+set ignorecase
+" Intentionally searches for upper letters
+set smartcase
+
 filetype off
 set noshowmode
 
@@ -8,84 +20,30 @@ imap <C-K> <Esc>
 " allow system clipboard
 set clipboard=unnamedplus
 
-filetype plugin on
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
-
-" The bundles you install will be listed here
-Plugin 'bling/vim-airline'
-Plugin 'christoomey/vim-sort-motion'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'christoomey/vim-system-copy'
-Plugin 'kana/vim-textobj-user'
-Plugin 'rbonvall/vim-textobj-latex'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'lervag/vimtex'
-Plugin 'cypok/vim-sml'
-Plugin 'rstacruz/sparkup'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'flrnprz/plastic.vim'
-Plugin 'skielbasa/vim-material-monokai'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'kristijanhusak/vim-hybrid-material'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on
-
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" _______________________________________________________________________
-" The rest of your config follows here
+" make Y yank cursor till end of line, matching D and C logic
+nnoremap Y y$
 
 " make backspace work like most other apps
 set backspace=2
 
-"shows horizontal and vertical line where the cursor is in the file
+" shows horizontal and vertical line where the cursor is in the file
 set cursorline cursorcolumn
 
-"linebreaks after long line are indented correctly
+" linebreaks after long line are indented correctly
 set wrap
 set breakindent
 
-"sets character encoding
+" sets character encoding
 set encoding=utf8
 
 " set linenumbers
 set relativenumber
 set number
 
-"show syntax
+" show syntax
 syntax enable
 
-"enable filetype detection
-filetype on
-filetype plugin on
-filetype indent on
-
-"enable mouse usage in GUI
+" enable mouse usage in GUI
 if has("gui_running")
     set mouse=a
     else
@@ -103,24 +61,96 @@ set noswapfile
 set scrolloff=10
 
 set history=999
-set hlsearch
 set showmatch
 
-"shows number of columns and lines in powerbar
+" shows number of columns and lines in powerbar
 set ruler
 
-"sets width for shifting with >> or << and tablength and converts tab to
-"spaces
+" sets width for shifting with >> or << and tablength and converts tab to
+" spaces
 set shiftwidth=4
 set tabstop=4
 set expandtab
 
+" New autosuggest scroll/accept keybindings
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+
+filetype plugin on
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required!
+Plugin 'VundleVim/Vundle.vim'
+
+" The bundles you install will be listed here
+Plugin 'bling/vim-airline' " add improved statusbar
+Plugin 'scrooloose/nerdtree' " file explorer in vim
+Plugin 'ryanoasis/vim-devicons' " add icons to Nerdtree
+Plugin 'christoomey/vim-sort-motion' " add sorting verb 'gs'
+Plugin 'tpope/vim-commentary' " add commenting verb 'gc'
+Plugin 'tpope/vim-fugitive' " Git support with ':Git (add|commit|...)'
+Plugin 'tpope/vim-repeat' 
+Plugin 'tpope/vim-surround' " add predicate for surrounding 's'
+Plugin 'tpope/vim-markdown' " markdown support
+Plugin 'christoomey/vim-system-copy' " copy/ paste to global system clipboard
+" also adds 'cp' and 'cv' copy and paste verbs + 'cP'/'cV' to copy current
+" line and paste system clipboard to next line
+Plugin 'kana/vim-textobj-user'
+Plugin 'rbonvall/vim-textobj-latex' " add textobj for latex
+Plugin 'lervag/vimtex'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'skielbasa/vim-material-monokai'
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Writing focused plugins
+Plugin 'preservim/vim-pencil'
+Plugin 'preservim/vim-colors-pencil'
+Plugin 'preservim/vim-lexical'
+Plugin 'preservim/vim-litecorrect'
+Plugin 'preservim/vim-textobj-sentence'
+Plugin 'preservim/vim-textobj-quote'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" _______________________________________________________________________
+" The rest of your config follows here
+
+" enable filetype detection
+filetype on
+filetype plugin on
+filetype indent on
+
+
 "set colourscheme
 set background=dark
-set t_Co=16
+set t_Co=256
 "colorscheme molokai_dark
-"colorscheme plastic
 "colorscheme material-monokai
+"colorscheme pencil
 colorscheme nord
 
 " __________________________________ PLUGIN SETTINGS ______________________________________
@@ -133,10 +163,13 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='angr'
 let g:airline_theme='nord'
+"let g:airline_theme = 'pencil'
 "let g:airline_left_sep = ''
 "let g:airline_right_sep = ''
 "disableing showing of trailing in current file
 let g:airline#extensions#whitespace#show_message = 0
+"include PencilMode in airline status
+let g:airline_section_x = '%{PencilMode()}'
 
 set guifont=MesloLGL\ Nerd\ Font\ 10
 
@@ -147,52 +180,149 @@ let g:airline_right_sep = "\uE0B6"
 " set the CN (column number) symbol:
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
-" => NERDTree setup
+" NERDTree setup
 """""""""""""""""""""""""""""
 " toggle NerdTree
 map <F2> :NERDTreeToggle<CR>
 
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator
-" modes)
-" ]]            Jump on next class or function (normal, visual, operator
-" modes)
-" [M            Jump on previous class or method (normal, visual, operator
-"modes)
-" ]M            Jump on next class or method (normal, visual, operator
-"modes)
-"let g:pymode_rope = 1
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
-" Documentation
-"let g:pymode_doc = 1
-"let g:pymode_doc_key = 'K'
+" Toggle Prose Mode
+"""""""""""""""""""""""""""""
+let w:ProseModeOn = 0
 
-"Linting
-"let g:pymode_lint = 1
-"let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-"let g:pymode_lint_write = 1
+function EnableProseMode()
+    setlocal spell spelllang=en_gb
+    SoftPencil
+    Goyo 80
+    " Limelight
+    echo "Prose Mode On"
+endfu
 
-" Support virtualenv
-"let g:pymode_virtualenv = 1
+function DisableProseMode()
+    NoPencil
+    Goyo!
+    " Limelight!
+    setlocal nospell
+    echo "Prose Mode Off"
+endfu
 
-" Enable breakpoints plugin
-"let g:pymode_breakpoint = 1
-"let g:pymode_breakpoint_bind = '<leader>b'
+function ToggleProseMode()
+    if w:ProseModeOn == 0
+        call EnableProseMode()
+        let w:ProseModeOn = 1
+    else
+        call DisableProseMode()
+    endif
+endfu
 
-" syntax highlighting
-"let g:pymode_syntax = 1
-"let g:pymode_syntax_all = 1
-"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-"let g:pymode_syntax_space_errors = g:pymode_syntax_all
+command Prose call EnableProseMode()
+command UnProse call DisableProseMode()
+command ToggleProse call ToggleProseMode()
 
-" Don't autofold code
-"let g:pymode_folding = 0
+" Pencil setup
+"""""""""""""""""""""""""""""
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#textwidth = 74 " default width of textlines
+let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': '',}
+" format current paragraph
+nnoremap <silent> Q gqap
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init({'wrap': 'hard'})
+augroup END
+
+" Lexical setup
+""""""""""""""""""""""""""""""
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+
+let g:lexical#spelllang = ['en_gb']
+let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
+let g:lexical#spell_key = '<leader>s'
+let g:lexical#thesaurus_key = '<leader>t'
+
+" Goyo setup
+"""""""""""""""""""""""""""""
+function! s:goyo_enter()
+  set noshowcmd
+  set scrolloff=999
+  " Limelight
+endfunction
+
+function! s:goyo_leave()
+  set showcmd
+  set scrolloff=10
+  " Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+function! s:auto_goyo()
+  if &ft == 'markdown'
+    Goyo 80
+  elseif exists('#goyo')
+    let bufnr = bufnr('%')
+    Goyo!
+    execute 'b '.bufnr
+  endif
+endfunction
+
+" augroup goyo_markdown
+"   autocmd!
+"   autocmd BufNewFile,BufRead * call s:auto_goyo()
+" augroup END
+
+" Limelight setup
+"""""""""""""""""""""""""""""
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = '240'
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = '#3B4252'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 0
+
+" Vim Textobj sentence setup
+"""""""""""""""""""""""""""""
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType textile call textobj#sentence#init()
+augroup END
+" go to end of current sentence: g)
+" go to end of previous sentence: g(
+
+" Vim Textobj quote setuo
+"""""""""""""""""""""""""""""
+augroup textobj_quote
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType textile call textobj#quote#init()
+  autocmd FileType text call textobj#quote#init({'educate': 0})
+augroup END
+
+let g:textobj#quote#doubleMotion = 'q'
+let g:textobj#quote#singleMotion = 'Q'
+
+" Vim litecorrect
+"""""""""""""""""""""""""""""
+augroup litecorrect
+  autocmd!
+  autocmd FileType markdown,mkd call litecorrect#init()
+  autocmd FileType textile call litecorrect#init()
+augroup END
