@@ -11,6 +11,10 @@ set ignorecase
 " Intentionally searches for upper letters
 set smartcase
 
+" set leader to space
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 filetype off
 set noshowmode
 
@@ -18,7 +22,7 @@ set noshowmode
 imap <C-K> <Esc>
 
 " allow system clipboard
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " make Y yank cursor till end of line, matching D and C logic
 nnoremap Y y$
@@ -29,6 +33,10 @@ set backspace=2
 " shows horizontal and vertical line where the cursor is in the file
 set cursorline cursorcolumn
 
+" set linenumbers
+set relativenumber
+set number
+
 " linebreaks after long line are indented correctly
 set wrap
 set breakindent
@@ -36,21 +44,11 @@ set breakindent
 " sets character encoding
 set encoding=utf8
 
-" set linenumbers
-set relativenumber
-set number
-
 " show syntax
 syntax enable
 
-" enable mouse usage in GUI
-if has("gui_running")
-    set mouse=a
-    else
-        set mouse=
-        endif
-
-set t_Co=256
+" set magic regex matching
+set magic
 
 " disable creating of all sort of swapfiles
 set nobackup
@@ -68,15 +66,28 @@ set ruler
 
 " sets width for shifting with >> or << and tablength and converts tab to
 " spaces
+set smartindent
 set shiftwidth=4
 set tabstop=4
 set expandtab
+
+" default split below and right
+set splitbelow
+set splitright
 
 " New autosuggest scroll/accept keybindings
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+
+" todo vsplit (below)/ hsplit (riht) shortcuts
+:command Vtodo 20sp todos.md
+:command Htodo 30vsp todos.md
+" shortcuts to open/close todos
+noremap <localleader>tv :Vtodo<CR>
+noremap <localleader>th :Htodo<CR>
+noremap <localleader>tc :bd todos.md<CR>
 
 filetype plugin on
 
@@ -97,7 +108,7 @@ Plugin 'tpope/vim-fugitive' " Git support with ':Git (add|commit|...)'
 Plugin 'tpope/vim-repeat' 
 Plugin 'tpope/vim-surround' " add predicate for surrounding 's'
 Plugin 'tpope/vim-markdown' " markdown support
-Plugin 'christoomey/vim-system-copy' " copy/ paste to global system clipboard
+" Plugin 'christoomey/vim-system-copy' " copy/ paste to global system clipboard
 " also adds 'cp' and 'cv' copy and paste verbs + 'cP'/'cV' to copy current
 " line and paste system clipboard to next line
 Plugin 'kana/vim-textobj-user'
@@ -197,7 +208,7 @@ let w:ProseModeOn = 0
 function EnableProseMode()
     setlocal spell spelllang=en_gb
     SoftPencil
-    Goyo 80
+    Goyo 60
     " Limelight
     echo "Prose Mode On"
 endfu
@@ -229,12 +240,12 @@ let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
 let g:pencil#textwidth = 74 " default width of textlines
 let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': '',}
 " format current paragraph
-nnoremap <silent> Q gqap
+nnoremap <leader>q gqap
 
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init({'wrap': 'hard'})
+  " autocmd FileType text         call pencil#init({'wrap': 'hard'})
 augroup END
 
 " Lexical setup
@@ -242,8 +253,8 @@ augroup END
 augroup lexical
   autocmd!
   autocmd FileType markdown,mkd call lexical#init()
-  autocmd FileType textile call lexical#init()
-  autocmd FileType text call lexical#init({ 'spell': 0 })
+  " autocmd FileType textile call lexical#init()
+  " autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
 
 let g:lexical#spelllang = ['en_gb']
