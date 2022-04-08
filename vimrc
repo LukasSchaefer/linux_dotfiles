@@ -76,7 +76,7 @@ set splitbelow
 set splitright
 
 " New autosuggest scroll/accept keybindings
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <C-l> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
@@ -164,7 +164,7 @@ filetype plugin on
 filetype indent on
 
 
-"set colourscheme
+" set colourscheme
 set background=dark
 set t_Co=256
 "colorscheme molokai_dark
