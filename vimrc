@@ -81,6 +81,14 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
+" resize horizontal splits quicker
+nnoremap <silent> <Leader>+ :resize +5<CR>
+nnoremap <silent> <Leader>- :resize -5<CR>
+
+" resize vertical splits quicker
+nnoremap <silent> <Leader>> :vertical resize +5<CR>
+nnoremap <silent> <Leader>< :vertical resize -5<CR>
+
 " todo vsplit (below)/ hsplit (riht) shortcuts
 :command Vtodo 20sp todos.md
 :command Htodo 30vsp todos.md
@@ -208,14 +216,14 @@ let w:ProseModeOn = 0
 function EnableProseMode()
     setlocal spell spelllang=en_gb
     SoftPencil
-    Goyo 60
+    " Goyo 60
     " Limelight
     echo "Prose Mode On"
 endfu
 
 function DisableProseMode()
     NoPencil
-    Goyo!
+    " Goyo!
     " Limelight!
     setlocal nospell
     echo "Prose Mode Off"
@@ -337,3 +345,8 @@ augroup litecorrect
   autocmd FileType markdown,mkd call litecorrect#init()
   autocmd FileType textile call litecorrect#init()
 augroup END
+
+
+" Vim Tex
+"""""""""""""""""""""""""""""
+let g:vimtex_quickfix_mode = 0
