@@ -81,6 +81,10 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
+" reoder tabs
+nnoremap <silent> <Leader>t :tabmove +1<CR>
+nnoremap <silent> <Leader>T :tabmove -1<CR>
+
 " resize horizontal splits quicker
 nnoremap <silent> <Leader>+ :resize +5<CR>
 nnoremap <silent> <Leader>- :resize -5<CR>
@@ -92,6 +96,7 @@ nnoremap <silent> <Leader>< :vertical resize -5<CR>
 " todo vsplit (below)/ hsplit (riht) shortcuts
 :command Vtodo 20sp todos.md
 :command Htodo 30vsp todos.md
+
 " shortcuts to open/close todos
 noremap <localleader>tv :Vtodo<CR>
 noremap <localleader>th :Htodo<CR>
@@ -346,7 +351,19 @@ augroup litecorrect
   autocmd FileType textile call litecorrect#init()
 augroup END
 
-
 " Vim Tex
 """""""""""""""""""""""""""""
 let g:vimtex_quickfix_mode = 0
+let g:vimtex_view_method = 'zathura'
+" Close viewers when VimTeX buffers are closed
+function! CloseViewers()
+  if executable('xdotool')
+        \ && exists('b:vimtex.viewer.xwin_id')
+        \ && b:vimtex.viewer.xwin_id > 0
+    call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+  endif
+endfunction
+augroup vimtex_event_2
+  au!
+  au User VimtexEventQuit call CloseViewers()
+augroup END
