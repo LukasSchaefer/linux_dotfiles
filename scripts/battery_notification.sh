@@ -9,10 +9,9 @@
 # https://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab/346580#346580
 # export $(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session | head -n 1)/environ | tr '\0' '\n')
 
-BATTERY_PATH=$(upower -e | grep battery)
-LINE_POWER_PATH=$(upower -e | grep line_power_AC)
-BATTERY_PERCENTAGE=$(upower -i $BATTERY_PATH | grep 'percentage:' | awk '{ print $2 }' | sed 's/%//')
-CABLE_PLUGGED=$(upower -i $LINE_POWER_PATH | grep -A2 'line-power' | grep online | awk '{ print $2 }')
+# 'Discharging' or 'Charging'
+CHARGING_STATUS=$(acpi -b | awk ' { print $3 }' | sed 's/,//')
+BATTERY_PERCENTAGE=$(acpi -b | awk ' { print $4 }' | sed 's/%,//')
 
 # get last battery status
 if [ ! -f "/tmp/last_battery_status.dat" ] ; then
@@ -21,7 +20,7 @@ else
     LAST_BATTERY_STATUS=`cat /tmp/last_battery_status.dat`
 fi
 
-if [[ $CABLE_PLUGGED == 'yes' ]]; then
+if [[ $CHARGING_STATUS == 'Charging' ]]; then
 
     if [[ $BATTERY_PERCENTAGE -gt 95 ]]; then
         if [[ $LAST_BATTERY_STATUS -ne 0 ]]; then
