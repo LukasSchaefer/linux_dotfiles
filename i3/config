@@ -93,11 +93,11 @@ set $ws3 3
 # set $ws4 4:
 # general version:
 set $ws4 4:
-set $ws5 5
+set $ws5 5:
 set $ws6 6
 set $ws7 7:
-set $ws8 8:
-set $ws9 9:
+set $ws8 8:
+set $ws9 9:
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -124,10 +124,13 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 # Move focused workspace to outputs (monitors)
 bindsym $mod+Ctrl+l move workspace to output right
 bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+j move workspace to output down
 
 # Open applications on specific workspaces
 # find class with `xprop | awk '/WM_CLASS/ { print $4 }'`
 assign [class="Mailspring"] $ws3
+assign [class="thunderbird"] $ws3
 assign [class="MineTime"] $ws3
 assign [class="Gnome-calendar"] $ws3
 assign [class="Todoist"] $ws3
@@ -136,6 +139,7 @@ assign [class="Chromium"] $ws4
 assign [class="Google-chrome"] $ws4
 assign [class="Firefox"] $ws4
 assign [class="Brave-browser"] $ws4
+assign [class="obsidian"] $ws5
 assign [class="Mendeley Desktop"] $ws7
 assign [class="Zotero"] $ws7
 assign [class="discord"] $ws8
@@ -155,7 +159,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id fcitx
 exec --no-startup-id ckb-next
-exec --no-startup-id imwheel
+# exec --no-startup-id imwheel
 exec --no-startup-id indicator-cpufreq
 # exec --no-startup-id blueman-applet
 #exec --no-startup-id start_conky_maia
@@ -174,15 +178,16 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Keys
 exec_always setxkbmap -option ctrl:nocaps
 exec_always xcape -e 'Control_L=Escape'
+
 # exec_always xmodmap -e "clear lock" #disable caps lock switch
 # exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
 # start terminal, chrome, mailspring, calendar and Discord on start
 exec --no-startup-id i3-msg 'workspace 1:; exec  /usr/bin/urxvt'
 exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/brave-browser'
-exec --no-startup-id i3-msg 'workspace 8:; exec /usr/bin/discord'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/mailspring'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-calendar'
+exec --no-startup-id i3-msg 'workspace 8:; exec /snap/bin/discord'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/thunderbird'
+# exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-calendar'
 exec --no-startup-id i3-msg 'workspace 3; exec /snap/bin/todoist'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /snap/bin/chromium'
 # exec --no-startup-id i3-msg 'workspace 4:; exec /usr/bin/firefox'
@@ -197,7 +202,8 @@ for_window [workspace=$ws3] layout stacking
 bindsym $mod+Shift+q kill
 
 # start program launcher
- bindsym $mod+d exec rofi -show run
+# bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
 #bindsym $mod+d exec "rofi -show combi -combi-modi drun,run,ssh,window"
 # calculate command
 bindsym $mod+c exec --no-startup-id LC_NUMERIC=en_US.UTF-8 rofi -show calc
@@ -235,7 +241,9 @@ bindsym $mod+Shift+Ctrl+t exec /snap/bin/todoist
 # start spotify
 bindsym $mod+Shift+Ctrl+s exec /snap/bin/spotify
 # start mailspring
-bindsym $mod+Shift+Ctrl+m exec /snap/bin/mailspring
+# bindsym $mod+Shift+Ctrl+m exec /snap/bin/mailspring
+# start thunderbird
+bindsym $mod+Shift+Ctrl+m exec /usr/bin/thunderbird
 # start gnome calendar
 bindsym $mod+Shift+Ctrl+c exec /usr/bin/gnome-calendar
 
@@ -290,20 +298,21 @@ bindsym $mod2+Shift+c exec dunstify -t 1000 -i "input-keyboard" -r 1234 -u norma
 
 # Set shut down, restart and locking features
 bindsym $mod+shift+x exec i3lock-fancy
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (Shift+l)ogout, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.scripts/i3exit.sh lock, mode "default"
-    bindsym Shift+l exec --no-startup-id ~/.scripts/i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id ~/.scripts/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.scripts/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.scripts/i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.scripts/i3exit shutdown, mode "default"
+bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/type-1/powermenu.sh
+# bindsym $mod+0 mode "$mode_system"
+# set $mode_system (l)ock, (Shift+l)ogout, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+# mode "$mode_system" {
+#     bindsym l exec --no-startup-id ~/.scripts/i3exit.sh lock, mode "default"
+#     bindsym Shift+l exec --no-startup-id ~/.scripts/i3exit.sh logout, mode "default"
+#     bindsym s exec --no-startup-id ~/.scripts/i3exit.sh suspend, mode "default"
+#     bindsym h exec --no-startup-id ~/.scripts/i3exit.sh hibernate, mode "default"
+#     bindsym r exec --no-startup-id ~/.scripts/i3exit.sh reboot, mode "default"
+#     bindsym Shift+s exec --no-startup-id ~/.scripts/i3exit shutdown, mode "default"
 
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+#     # exit system mode: "Enter" or "Escape"
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
 
 
 # Resize window (you can also use the mouse for that)

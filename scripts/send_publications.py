@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# send publications by keywords from browsertabs to email (via ssmtp)
-# and/ or telegram (https://github.com/rahiel/telegram-send)
+# send publications by keywords from browsertabs to telegram (https://github.com/rahiel/telegram-send)
 # browsertabs obtained using brotab (https://github.com/balta2ar/brotab)
 
 import argparse

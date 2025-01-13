@@ -12,12 +12,17 @@ PATH=$PATH:$HOME/gems/bin
 
 # Perl variables
 PATH=$PATH:$HOME/perl5/bin
+
 PERL5LIB="/home/lukas/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/lukas/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/lukas/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/lukas/perl5"; export PERL_MM_OPT;
 
-# >>> conda initialize >>>
+# add rofi launchers to path
+export PATH=$HOME/.config/rofi/scripts:$PATH
+
+
+ #>> >conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/lukas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -26,7 +31,7 @@ else
     if [ -f "/home/lukas/anaconda3/etc/profile.d/conda.sh" ]; then
         . "/home/lukas/anaconda3/etc/profile.d/conda.sh"
     else
-        PATH=$HOME/anaconda3/bin:$PATH
+        export PATH="/home/lukas/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -39,20 +44,22 @@ PATH=$PATH:/home/lukas/.local/bin
 export SC2PATH=/home/lukas/Documents/University/PhD/Research/environments/starcraft/StarCraftII
 
 # add mujoco to library path
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lukas/.mujoco/mujoco200/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lukas/.mujoco/mujoco200/bin:/home/lukas/.mujoco/mujoco210/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lukas/Documents/University/PhD/Research/environments/mujoco/usr/lib64
-# export LDFLAGS="-L/home/lukas/Documents/University/PhD/Research/environments/mujoco/usr/lib64"
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 
 # setup path for MALMO
 # setup JVM for MALMO
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export MALMO_XSD_PATH=/home/lukas/Documents/University/PhD/Research/environments/malmo/MalmoPlatform/Schemas
 
-
 # remove duplicates in path
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
+# NVM setup for node.js version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ------------------------------------ OH - MY - ZSH ------------------------------------
 
@@ -160,3 +167,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+. "$HOME/.cargo/env"

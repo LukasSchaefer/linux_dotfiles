@@ -1,4 +1,4 @@
-!#include "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
+!#INCLUDE "/home/lukas/.Xresources-themes/iterm-OneHalfDark.Xresources"
 #include "/home/lukas/.Xresources-themes/nord.Xresources"
 
 Xft.dpi:       100
@@ -69,8 +69,8 @@ URxvt.internalBorder: 5
 ! URxvt.shading:		15
 
 !! Copy Paste & Other Extensions
-urxvt*perl-lib: /usr/lib/urxvt/perl/
-URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select
+!urxvt*perl-lib: /usr/lib/urxvt/perl/
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select,font-size
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
@@ -85,3 +85,10 @@ URxvt.urlButton: 1
 URxvt.keyboard-select.clipboard: true
 urxvt*matcher.button: 1
 urxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+
+/* URxvt.keysym.C-Up:     font-size:increase */
+/* URxvt.keysym.C-Down:   font-size:decrease */
+/* URxvt.keysym.C-S-Up:   font-size:incglobal */
+/* URxvt.keysym.C-S-Down: font-size:decglobal */
+/* URxvt.keysym.C-equal:  font-size:reset */
+/* URxvt.keysym.C-slash:  font-size:show */

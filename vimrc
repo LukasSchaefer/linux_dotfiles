@@ -132,6 +132,7 @@ Plugin 'skielbasa/vim-material-monokai'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'github/copilot.vim'
 
 " Writing focused plugins
 Plugin 'preservim/vim-pencil'
@@ -367,3 +368,31 @@ augroup vimtex_event_2
   au!
   au User VimtexEventQuit call CloseViewers()
 augroup END
+" let g:vimtex_compiler_latexrun_engines = {'_': 'lualatex'}
+" let g:vimtex_compiler_latexmk_engines = {'_': '-lualatex'}
+let g:vimtex_compiler_latexmk = {
+            \ 'options' : [
+                \   '-shell-escape',
+                \   '-verbose',
+                \   '-file-line-error',
+                \   '-synctex=1',
+                \   '-interaction=nonstopmode',
+                \ ],
+                \}
+let g:vimtex_syntax_packages = {'minted': {'load': 2}}
+
+" Github Copilot
+"""""""""""""""""""""""""""""
+" let g:copilot#enable = 1
+" let g:copilot#enable_on_startup = 1
+" let g:copilot#enable_on_insert_enter = 1
+" let g:copilot#enable_on_insert_leave = 1
+" let g:copilot#enable_on_filetype = 1
+
+" " shortcuts for Github Copilot
+" " Reject suggestion
+" imap <silent><script><expr> <C-r> copilot-i_CTRL-]()
+" " Cycle to next suggestion
+" imap <silent><script><expr> <C-[> copilot-i_ALT-]()
+" " Cycle to previous suggestion
+" imap <silent><script><expr> <C-]> copilot-i_ALT-[()

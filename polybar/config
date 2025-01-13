@@ -88,6 +88,14 @@ monitor = DP-1
 inherit = bar/master
 monitor = DP-1-1
 
+[bar/DP-1-1-1]
+inherit = bar/master
+monitor = DP-1-1-1
+
+[bar/DP-1-1-2]
+inherit = bar/master
+monitor = DP-1-1-2
+
 [bar/DP-2]
 inherit = bar/master
 monitor = DP-2

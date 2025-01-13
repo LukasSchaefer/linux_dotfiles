@@ -76,3 +76,11 @@ wkill() {
     ID=$(xwininfo | grep "Window id:" | awk '{print $4}')
     xkill -id $ID
 }
+
+copy() {
+    if ! [ "$#" -ge 1 ]; then
+        echo "ERROR: 'copy <file>' to copy content of file"
+        return
+    fi
+    cat "$1" | xclip -selection c
+}
